@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- Header 头部 -->
+	<div class="top">
+		<div class="header">
+			<div class="logo">
+				<img src="img/logo.png" />
+			</div>
+	
+			<div class="header_left">
+	
+				<%if(session.getAttribute("loginedUser")==null){ %> <a
+					href="login.jsp">你好，请登录</a> <%}else{ %> <a href="myinfo.jsp"
+					style="font-size: 18px;">${loginedUser.name}</a> | <%} %> <a
+					href="cart.jsp">购物车 </a>| <a href="olist.jsp">我的订单 </a>| <a
+					href="logout.s">退出 </a>
+			</div>
+		</div>
+		<div class="column">
+			<a href="index.jsp">商城首页</a> <a href="clist.jsp?cid=1">雕塑手办</a> <a
+				href="clist.jsp?cid=2">毛绒玩偶</a> <a href="clist.jsp?cid=3">男女服饰</a> <a
+				href="clist.jsp?cid=4">珠宝首饰</a> <a href="clist.jsp?cid=5">数码电子</a> <a
+				href="clist.jsp?cid=6">海报艺术</a>
+		</div>
+	</div>
+	
+	<!-- footer 尾部-->
+	<div class="container footer">
+		<div class="span24">
+			<div class="footerAd">
+				<img src="img/footer.jpg" style="width: 100%; height: 52px;" />
+			</div>
+		</div>
+		<div class="span24">
+			<ul class="bottomNav">
+				<li>
+					<a>友情链接</a>
+					：
+				</li>
+			<%
+			String s = "select * from internet"; 
+			List<Map<String,Object>> l =DBHelper.selectList(s);
+			for(Map<String,Object> n : l){
+				%>
+				<li>
+					<a href="<%=n.get("url") %>" ><%=n.get("name") %></a>
+					|
+				</li>
+				<%} %>
+			</ul>
+		</div>
+		<div class="span24">
+			<div class="copyright">Copyright © 2005-2013 Mango商城 版权所有</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>LOL周边商城</title>
+<link href="css/common.css" rel="stylesheet" type="text/css"/>
+<link href="css/cart.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="css/header.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<script type="text/javascript">
+	function cancle(oid){
+		// 定义请求地址
+		var url = "doDelete.s?op=deleteOrders&oid="+oid;
+		$.ajax({
+	        //请求方式
+	        type : "POST",
+	        //请求的媒体类型
+	        contentType: "application/json;charset=UTF-8",
+	        //请求地址
+	        url : url,
+	        //数据，json字符串
+	        //servlet.s?user=zhangsan
+	        //data : {"cid":cid,"symbol":e},
+	        //请求成功
+	        success : function(result) {
+	        	alert("删除成功");
+	        	location.href="olist.html";
+	        }
+	    });
+	
+	}
+	function dir_confirm(oid){
+		
+		var choose = confirm("确认取消订单？");
+		if(choose==true){
+			//checkForm();
+			cancle(oid);
+		}else{
+			r = false;
+		}
+	}
+	
+</script>
+<body>
+
+<%@include file="/common/header.html" %>
+
+<div class="container cart">
+
+		<div class="span24">
+		
+				<table>
+					<tbody>
+					<%
+						String sql = "select * from orders where uid=?";
+					    
+						Map<String,Object> m = (Map<String,Object>)session.getAttribute("loginedUser");
+						Object uid = m.get("uid");
+						
+						List<Map<String,Object>> list = DBHelper.selectList(sql, uid);
+						for(Map<String,Object> n : list) {
+							pageContext.setAttribute("o", n);
+					%>
+					<tr>
+						<th colspan="5">
+						订单号:${o.oid } 
+						金额:<font color="red">${o.total }  </font>
+						状态 :
+						<%
+							int state = (int)n.get("state");
+							if(state==1){%>
+								<a><font color="green">已付款</font></a>
+							<%}else{ %>
+								<a href="pay2.html?oid=${o.oid }"><font color="red">待付款</font></a>
+							<%} %>
+							<input type="button" value="取消订单" onclick="dir_confirm(${o.oid })" style="float: right;margin-top: 6px">
+						</th>
+					</tr>
+					<tr>
+						<th>图片</th>
+						<th>商品</th>
+						<th>价格</th>
+						<th>数量</th>
+						<th>小计</th>
+					</tr>
+						
+						
+							
+							<%
+								String sql2 = "select * from orderitem where oid=? ";
+								List<Map<String,Object>> list2 = DBHelper.selectList(sql2, n.get("oid"));
+								for(Map<String,Object> k : list2){
+							%>
+							
+							<%
+								String sql3 = "select * from product where pid=?";
+								List<Map<String,Object>> list3 = DBHelper.selectList(sql3, k.get("pid"));
+								for(Map<String,Object> p : list3){
+							%>
+							<tr>
+							<td width="60">
+								<img src="<%=p.get("image")%>"/>
+							</td>
+							<td>
+								<a target="_blank"><%=p.get("pname") %></a>
+							</td>
+							<td>
+								<%=p.get("price") %>
+							</td>
+							<td class="quantity" width="60">
+								<%=k.get("count") %>						
+							</td>
+							<td width="140">
+								<span class="subtotal">￥<%=k.get("subtotal") %></span>
+							</td>
+							<%} %>
+							<%} %>
+						</tr>
+						<%} %>
+				</tbody>
+				
+			</table>
+				
+			
+		</div>
+		
+	</div>
+		
+	</div>
+<%@include file="/common/footer.html" %>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link href="css/usabase.css" rel="stylesheet" type="text/css">
+	<link href="css/member.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/user.css" />
+</head>
+<body>
+<div class="mem_sai clearf">
+				<div class="clearf lh20 c666">
+					<span class="c000">维护您的个人信息</span><br> 完善以下个人信息，将有助于我们为您提供更定制化的服务。
+				</div>
+			</div>
+			<div class="memtabbar">
+				<form id="userInfoForm">
+					<input type="hidden" id="province_hid" value="">
+					<input type="hidden" id="city_hid" value="">
+					<input type="hidden" id="district_hid" value="">
+					<table border="0" cellspacing="0" cellpadding="0" class="memtab">
+						<tbody>
+						<%
+							Map<String, Object> user = (Map<String, Object>) session.getAttribute("loginedUser");
+						
+						%>
+							<tr>
+								<td width="200" class="right">
+									<font class="cfb6">*</font> 用户名：</td>
+								<td width="740">
+									<input value="<%=user.get("username")%>" 
+										name="username" id="username" type="text" 
+										class="gew_inp inpw120" onblur="checkUserName(this.value)" size="15" style="width:110px;">
+									<span id="nameTipMsg" ></span>
+								</td>
+							</tr>
+							
+							<tr>
+								<td width="200" class="right">
+									<font class="cfb6">*</font> 性别：</td>
+								<td id="sexItem" width="740">
+									<input type="radio" name="userDetail.sex" id="male" value="1" checked="checked"> 男&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="userDetail.sex" id="female" value="2"> 女
+									<span style="color:red;display:none" id="sexPrompt" class="pl5 c999">请选择性别</span>
+								</td>
+							</tr>
+	
+							
+							
+							<tr>
+								<td width="200" valign="top" class="right"><span class="lh24"><font class="cfb6">*</font> 手机：</span></td>
+								<td width="740"><input value="" name="userInfo.mobile" id="mobile" type="text" class="gew_inp inpw120 mb5" size="15">
+									<span style="color:red;display:none" id="mobilePrompt" class="pl5 c999">请填写正确的手机号码</span>
+									<br><img src="img/mobile.jpg" style="vertical-align:middle"><span class="cfb6 pl5">填写手机号码，优惠信息随时掌控！</span></td>
+							</tr>
+							<tr>
+								<td width="200" class="right">
+									<font class="cfb6">*</font> 邮箱：</td>
+								<td width="740"><input value="" name="userDetail.email" id="email" type="text" class="gew_inp inpw120" size="15">
+									<span style="color:red;display:none" id="emailPrompt" class="pl5 c999">请填写正确电子邮件</span>
+								</td>
+							</tr>
+	
+							<tr>
+								<td width="200" class="right">
+									<font class="cfb6">*</font> 地址：</td>
+								<td width="740"><input value="" name="userDetail.email" id="email" type="text" class="gew_inp inpw120" size="15">
+									<span style="color:red;display:none" id="emailPrompt" class="pl5 c999">请填写正确电子邮件</span>
+								</td>
+							</tr>
+							<tr>
+								<td width="200" class="right">&nbsp;</td>
+								<td width="740" height="60">
+									<a href="javascript:updateUserInfo();" class="gew_btn" id="submit">提 交</a>
+								</td>
+							</tr>
+	
+						</tbody>
+					</table>
+				</form>
+				<div class="meuad" id="userAd">
+				</div>
+			</div>
+</body>
+</html>

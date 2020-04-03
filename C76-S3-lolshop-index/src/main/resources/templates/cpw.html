@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>LOL周边商城</title>
+	<link href="css/usabase.css" rel="stylesheet" type="text/css">
+	<link href="css/member.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/user.css" />
+	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+</head>
+<script type="text/javascript">
+	var r = false;
+	
+	
+	var xmlhttp;
+	try {
+		xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+	} catch (e) {
+		try {
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		} catch (e) {
+			try {
+				xmlhttp = new XMLHttpRequest();
+			} catch (e) {
+			}
+		}
+	}
+	
+	function change(){
+		var password = document.getElementById("password").value;
+		var newpassword = document.getElementById("newpassword").value;
+		var rnpw = document.getElementById("rnpw").value;
+		// 定义请求地址
+		var url = "user.s?op=cpw&password=" + password
+				+ "&newpassword=" + newpassword + "&rnpw=" + rnpw;
+		$.ajax({
+            //请求方式
+            type : "POST",
+            //请求的媒体类型
+            contentType: "application/json;charset=UTF-8",
+            //请求地址
+            url : url,
+            //数据，json字符串
+            //servlet.s?user=zhangsan
+            //data : {"cid":cid,"symbol":e},
+            //请求成功
+            success : function(result) {
+            	alert("修改成功，请重新登录！");
+				window.parent.location.href="logout.s";
+            }
+        });
+	
+}
+
+	
+	function check(){
+		var valid = true;
+		$("#userInfoForm input[name]").each(function(){
+			if($(this).next().text()!=""){
+				alert($(this).next().text());
+				valid = false;
+				return false;
+			}
+		});
+		if(valid){
+			//$("#userInfoForm").submit();
+			if(r==true){
+				change();
+			}
+		}
+	}
+	function checkForm(){
+		newpassword = document.getElementById("newpassword").value;
+		rnpw = document.getElementById("rnpw").value;
+		if(rnpw != newpassword){
+			$("#rnpw").next().text("两次输入的密码不一致！！！");
+			r = false;
+		}else{
+			$("#rnpw").next().text("");
+			r = true;
+		}
+		
+	}
+	function dir_confirm(){
+		var choose = confirm("确认修改?");
+		if(choose==true){
+			checkForm();
+		}else{
+			r = false;
+		}
+	}
+</script>
+<body>
+	<div class="title">
+		<%if(request.getAttribute("msg")!=null){ %>
+			<font color="red"><%=request.getAttribute("msg")%></font>
+		<%}%>
+	</div>
+	<div class="memtabbar" >
+		<form id="userInfoForm"
+			method="post" novalidate="novalidate"
+			onsubmit="check();return false;">
+			
+			<input type="hidden" id="province_hid" value="">
+			<input type="hidden" id="city_hid" value="">
+			<input type="hidden" id="district_hid" value="">
+			<table border="0" cellspacing="0" cellpadding="0" class="memtab">
+				<tbody>
+				<%
+					Map<String, Object> user = (Map<String, Object>) session.getAttribute("loginedUser");
+				
+				%>
+					<tr>
+						<td width="200" class="right">
+							<font class="cfb6">*</font> 原密码：</td>
+						<td width="740">
+							<input value="" name="password" id="password" type="password" 
+								class="gew_inp inpw120"  size="15" style="width:110px;">
+							<span id="" style="color:red;"></span>
+						</td>
+					</tr>
+					
+					<tr>
+						<td width="200" class="right">
+							<font class="cfb6">*</font> 新密码：</td>
+						<td width="740">
+							<input value="" name="newpassword" id="newpassword" type="password" 
+								class="gew_inp inpw120"  size="15" style="width:110px;">
+							<span id="" style="color:red;"></span>
+						</td>
+					</tr>
+					
+					<tr>
+						<td width="200" class="right">
+							<font class="cfb6">*</font> 确认新密码：</td>
+						<td width="740">
+							<input value="" name="rnpw" id="rnpw" type="password" 
+								class="gew_inp inpw120"  size="15" style="width:110px;">
+							<span id="" style="color:red;"></span>
+						</td>
+					</tr>
+					
+
+					<tr>
+						<td width="200" class="right">&nbsp;</td>
+						<td width="740" height="60">
+							<input type="submit" onclick="dir_confirm()" class="submit" value="提交" style="width:100px;height:40px;font-size:15px;margin-left:5px">
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</form>
+		<div class="meuad" id="userAd">
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	
+	document.getElementById("newpassword").onblur = function () {
+	    //判断这个文本框中输入的是不是密码
+	    var pwd = /^[a-zA-Z0-9]{6,16}$/;
+	    var newpassword = document.getElementById("newpassword").value;
+	    if(newpassword == null || newpassword == ""){
+	    	$("#newpassword").next().text("");
+	    }else{
+	    	if (pwd.test(this.value)==false ) {
+		    	//alert("密码不能含有非法字符，长度在6-16之间");
+		    	$("#newpassword").next().text("密码不能含有非法字符，长度在6-16之间");
+		    }else{
+		    	$("#newpassword").next().text("");
+		    }
+	    }
+	    
+	  };
+</script>
+</html>

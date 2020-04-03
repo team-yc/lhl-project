@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+<!-- 浮动广告代码开始 -->
+<style>
+.pointer{
+	cursor: pointer;
+}
+</style>
+<body onload="init()">
+<header>
+<script>
+		function init(){
+			setTimeout("show()",2000);
+		}
+		function show(){
+			//首先获取要操作的img
+			var img=document.getElementById("ShowAD");
+			//显示广告
+			img.style.display="block";
+			//开启定时器 关闭广告
+			setTimeout("hiddenAD()",10000);
+		}
+		function hiddenAD(){
+			//首先获取要操作的img
+			var img=document.getElementById("ShowAD");
+			//隐藏广告
+			img.style.display="none";
+		}
+	</script>
+</header>
+<div id="ShowAD" style="position:absolute; z-index: 100;">
+<div style="width:257;height:18px;font-size:14px;font-weight:bold;text-align:left;CURSOR: hand;" onClick="closead();"><font
+color=ff0000 class="pointer">关闭</font></div>
+<IFRAME allowTransparency="true" marginwidth=0 marginheight=0 src="1.jsp" frameborder=0 width=257 scrolling=no
+height=344></IFRAME>
+</div>
+
+<script>
+var bodyfrm = ( document.compatMode.toLowerCase()=="css1compat" ) ? document.documentElement : document.body;
+var adst = document.getElementById("ShowAD").style;
+adst.top = ( bodyfrm.clientHeight -344-22 ) + "px";
+adst.left = ( bodyfrm.clientWidth -257 ) + "px";
+function moveR() {
+adst.top = ( bodyfrm.scrollTop + bodyfrm.clientHeight - 344-22) + "px";
+adst.left = ( bodyfrm.scrollLeft + bodyfrm.clientWidth - 257 ) + "px";
+}
+setInterval("moveR();", 80);
+function closead()
+{
+adst.display='none';
+}
+function showAD(){
+	setTimeout("closead()",1000);
+}
+
+</script>
+</body>
+<!-- 浮动广告代码结束 -->

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>LOL周边商城</title>
+	<link rel="stylesheet" href="css/header.css" />
+	<link href="css/usabase.css" rel="stylesheet" type="text/css">
+	<link href="css/member.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/user.css" />
+	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+	
+</head>
+
+<body>
+	<script src="js/raven.min.js"></script>
+	
+	<!-- <%@include file="common/header.html" %>
+	
+	<%
+			String url = request.getParameter("url");
+			if(url == null ){
+				url = "userinfo.html";
+			}else{
+				url = request.getParameter("url");
+			}
+		
+		%> -->
+	<div class="user_mid">
+		<div class="user_top"> </div>
+		<!--[if !IE]>左侧导航<![endif]-->
+		<div class="memleft" id="categoryAddress">
+			<ul>
+				<li>
+					<a href="cart.html" id="l1">我的购物车</a>
+				</li>
+				<li id="myOrder">
+					<a href="olist.html" id="l2">我的订单</a>
+				</li>
+	
+				<li id="myAddress" >
+					<a href="myinfo.html?url=addr.html" id="l3">收货地址</a>
+				</li>
+	
+				<li id="myUserInfo" >
+					<a href="myinfo.html?url=userinfo.html" id="l4">个人资料</a>
+				</li>
+				<li>
+					<a href="myinfo.html?url=cpw.html" id="l5">修改密码</a>
+				</li>
+			</ul>
+		</div>
+		<iframe width="950px" height="700px" style="float: right;" frameborder="0" 
+			src="<%=url%>"> 
+		</iframe>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+body{
+	margin: 0;
+}
+
+.selected{font-weight:bold !important; color:red !important;}
+
+.clist_tab{
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	color: #7D7D7D;
+}
+.clist_tab_1:hover{
+	text-decoration: underline;
+}
+.clist_top{
+	width: 100%;
+	height: 200px;
+}
+.clist_top img{
+	width: 100%;
+	height: 100%;
+}
+.shopshow{
+	width: 100%;
+	height:900px;
+	background-color: red;
+}
+.clist_bq{
+	float: left;
+	width: 200px;
+	text-align: left;
+}
+.clist_bq dl dt{
+	margin-left: 13px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.clist_bq a{
+	
+	text-decoration: none;
+}
+.clist_bq dl dd{
+	line-height: 30px;
+	margin-left: 15px;
+	color: black;
+}
+.clist_bq dl a{
+	color: black;
+	
+	line-height:40px;
+}
+.clist_bq dl dd a:link{
+	color: black;
+}
+clist_bq dl dd a:visited{
+	color: red;
+}
+.clist_bq dl dd a:hover{
+	font-weight: bold;
+	color: orangered;
+	text-decoration: underline;
+}
+.clist_bq dl dd a:active{
+	color: red;
+}
+.clist_shop{
+	float: left;
+	height:850px;
+	width: 700;
+}
+.clist_shop ul{
+	list-style: none;
+	float: left;
+}
+.clist_shop ul li{
+	margin-left: 30px;
+	margin-top: 30px;
+	float: left;
+	width: 270px;
+	height: 300px;
+	text-align: center;
+	
+}
+.clist_shop_img img{
+	width: 250px;
+	height: 250px;
+}
+.clist_shop p{
+	margin-top: 5px;
+	font-size: 18px;
+	text-decoration: none;
+}
+.clist_mid{
+	margin-left: 50px;
+	width: 900px;
+	height: 900px;
+}
+.clist_fy{
+	float: left;
+}

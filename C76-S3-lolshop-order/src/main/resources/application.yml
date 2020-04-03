@@ -1,0 +1,28 @@
+server:
+   port: 8001
+
+spring:
+   datasource:
+      url: jdbc:mysql://127.0.0.1:3306/C76-S3-lolshop
+      username: root
+      password: a
+      driver-class-name: com.mysql.jdbc.Driver
+   application:
+      name: lolshop-order
+mybatis:
+   #实体类的路径
+   type-aliases-package: com.yc.lolshop.bean
+   configuration:
+      map-under-score-to-camel-case: true
+    
+#日志配置
+logging:
+   level:
+      com:
+         yc:
+            lolshop:
+               dao: debug
+               web: warn
+
+  
+  

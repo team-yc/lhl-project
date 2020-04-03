@@ -1,0 +1,62 @@
+.user_mid {
+	width: 1190px;
+	margin: 0px auto;
+	background-color: aquamarine;
+}
+
+.user_top {
+	background: url(../img/mem_top.jpg);
+	background-size: auto;
+	height: 100px;
+}
+
+.user_card {
+	float: left;
+	width: 150px;
+	border-right: 1px solid #E1E1E1;
+}
+
+.user_card ul li.hover a {
+	color: red;
+}
+
+.user_card ul li {
+	border-bottom: 1px solid #e1e1e1;
+	line-height: 38px;
+	height: 38px;
+	list-style: none;
+}
+
+.user_card ul li a {
+	font-family: "微软雅黑";
+	font-size: 17px;
+	line-height: 20px;
+}
+
+.user_show {
+	float: right;
+	width: 1000px;
+	height: 500px;
+}
+
+.clearf {
+	color: #000000;
+}
+
+.c666 {
+	color: #666;
+}
+
+.c000 {
+	color: #000000;
+}
+
+.memtab th {
+	text-align: left;
+	color: #333;
+	text-indent: 10px;
+	height: 38px;
+	line-height: 38px;
+	font-weight: normal;
+	background: #f0f0f0;
+}

@@ -1,19 +1,31 @@
 package com.yc.lolshop.bean;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 public class User implements java.io.Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
+	@NotEmpty
+    @Length(max=16,min=4)
     private String username;
-
+	
+	@NotEmpty
+    @Length(max=12,min=6,message="密码长度必须在6~12位之间")
     private String password;
 
     private String name;
 
+    @NotEmpty
+    @Email()
     private String email;
 
+    @Length(min = 11,max = 11,message="电话号码必须11位")
     private String phone;
 
     private String sex;

@@ -1,12 +1,19 @@
 package com.yc.lolshop.biz;
 
-public class BizException extends Exception{
-
+public class BizException extends Exception {
 	private static final long serialVersionUID = 1L;
 
-	public BizException() {
-		super();
-		// TODO Auto-generated constructor stub
+	//错误的名称(属性名)
+	private String name;
+	
+	//错误编码
+	private int code;
+	
+	//自定义构造方法
+	public BizException(int code, String name,String msg) {
+		super(msg);
+		this.name = name;
+		this.code = code;
 	}
 
 	public BizException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
@@ -28,6 +35,21 @@ public class BizException extends Exception{
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
 	
 }

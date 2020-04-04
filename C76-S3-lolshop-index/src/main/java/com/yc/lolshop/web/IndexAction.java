@@ -2,14 +2,18 @@ package com.yc.lolshop.web;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yc.lolshop.vo.Result;
 import com.yc.lolshop.bean.User;
 import com.yc.lolshop.biz.BizException;
 import com.yc.lolshop.biz.UserBiz;
@@ -61,6 +65,68 @@ public class IndexAction {
 			mav.addObject("msg", e.getMessage());
 			mav.setViewName("login");
 		}
+		return mav;
+	}
+	
+	@GetMapping("toforget")
+	public ModelAndView toforget(ModelAndView mav) {
+		mav.setViewName("forget");
+		return mav;
+	}
+	@GetMapping("out")
+	public ModelAndView out(ModelAndView mav,HttpSession session) {
+		session.setAttribute("loginedUser", null);
+		return index(mav);
+	}
+	
+	@PostMapping("sendVcode")
+	@ResponseBody
+	public Result sendVcode(String username,HttpSession session) {
+		try {
+			String vcode = ubiz.forget(username);
+			session.setAttribute("vcode", vcode);
+			return new Result(0,"验证码发送成功！");
+		} catch (BizException e) {
+			e.printStackTrace();
+			return new Result(1,e.getMessage());
+		} catch(RuntimeException e) {
+			return new Result(1,"邮件发送失败，请联系客服！");
+		}
+	}
+	@PostMapping("changePwd")
+	@ResponseBody
+	public Result changePwd(@Valid User user,Errors errors,String repwd,String vcode,@SessionAttribute(value = "vcode",required = false) String sessionVcode,HttpSession session) {
+		if(sessionVcode == null) {
+			return new Result(1,"请发送邮件获取验证码！");
+		}
+		if(errors.hasFieldErrors("password")) {
+			return new Result(1,errors.getFieldError("password").getDefaultMessage());
+		}
+		if(sessionVcode.equals(vcode) == false) {
+			return new Result(1,"验证码输入错误！");
+		}else {
+			try {
+				ubiz.savePwd(user,repwd);
+			} catch (BizException e) {
+				e.printStackTrace();
+				return new Result(e.getCode(),e.getMessage());
+			}
+			session.setAttribute("vcode", null);
+			return new Result(0,"修改成功！");
+		}
+	}
+	
+	
+	@GetMapping("toreg")
+	public ModelAndView toreg(ModelAndView mav) {
+		mav.setViewName("reg");
+		return mav;
+	}
+	
+	@PostMapping("reg")
+	public ModelAndView reg(User user,String repassword,ModelAndView mav) {
+		//ubiz.reg(user,repassword);
+		
 		return mav;
 	}
 

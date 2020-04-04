@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.lolshop.vo.Result;
@@ -75,8 +76,8 @@ public class IndexAction {
 		return mav;
 	}
 	@GetMapping("out")
-	public ModelAndView out(ModelAndView mav,@SessionAttribute("loginedUser") HttpSession session) {
-		session.setAttribute("loginedUser", null);
+	public ModelAndView out(ModelAndView mav,SessionStatus sessionStatus, HttpSession session){
+        sessionStatus.setComplete();
 		return index(mav);
 	}
 	

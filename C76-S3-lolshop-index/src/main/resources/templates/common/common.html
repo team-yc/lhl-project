@@ -13,7 +13,14 @@
 			</div>
 
 			<div class="header_left">
-				<a href="tologin">你好,请登录</a> 
+				<span class="fl">你好， 
+					<span th:if="${session.loginedUser} == null"> 请
+						<a href="tologin">登录</a>&nbsp;
+					</span> 
+					<span th:if="${session.loginedUser} != null"
+						th:text="${session.loginedUser.username}"> 
+					</span> 
+				</span>
 				<a href="">购物车  </a>|
 				<a href="">我的订单  </a>|
 				<a href="">退出 </a>

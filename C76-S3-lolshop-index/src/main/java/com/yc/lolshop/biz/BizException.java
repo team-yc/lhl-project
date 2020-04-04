@@ -52,4 +52,8 @@ public class BizException extends Exception {
 		this.code = code;
 	}
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git

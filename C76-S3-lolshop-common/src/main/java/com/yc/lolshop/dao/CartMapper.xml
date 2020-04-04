@@ -6,6 +6,8 @@
     <result column="ciid" jdbcType="INTEGER" property="ciid" />
     <result column="total" jdbcType="DOUBLE" property="total" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
+    <association property="cartitem" column="ciid" 
+    	select="com.yc.lolshop.dao.CartitemMapper.selectByPrimaryKey"></association>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>

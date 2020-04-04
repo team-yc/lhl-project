@@ -7,6 +7,8 @@
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="count" jdbcType="INTEGER" property="count" />
     <result column="subTotal" jdbcType="DOUBLE" property="subtotal" />
+    <association property="product" column="pid" 
+    	select="com.yc.lolshop.dao.ProductMapper.selectByPrimaryKey"></association>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>

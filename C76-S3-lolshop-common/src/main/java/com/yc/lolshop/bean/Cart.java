@@ -1,43 +1,56 @@
 package com.yc.lolshop.bean;
 
+
 public class Cart {
-    private Integer id;
 
-    private Integer ciid;
+	private Integer id;
 
-    private Double total;
+	private Integer ciid;
 
-    private Integer uid;
+	private Double total;
 
-    public Integer getId() {
-        return id;
-    }
+	private Integer uid;
+	
+	private Cartitem cartitem;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Cartitem getCartitem() {
+		return cartitem;
+	}
 
-    public Integer getCiid() {
-        return ciid;
-    }
+	public void setCartitem(Cartitem cartitem) {
+		this.cartitem = cartitem;
+	}
 
-    public void setCiid(Integer ciid) {
-        this.ciid = ciid;
-    }
 
-    public Double getTotal() {
-        return total;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setTotal(Double total) {
-        this.total = total;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Integer getUid() {
-        return uid;
-    }
+	public Integer getCiid() {
+		return ciid;
+	}
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+	public void setCiid(Integer ciid) {
+		this.ciid = ciid;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
+	public Integer getUid() {
+		return uid;
+	}
+
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
 }

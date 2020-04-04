@@ -31,6 +31,7 @@
 			<scope>test</scope>
 		</dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
 		<dependency>
 			<groupId>jakarta.validation</groupId>
@@ -45,6 +46,17 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		
+=======
+
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
 =======
 
 		<dependency>

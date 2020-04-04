@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yc.lolshop.bean.Cart;
+import com.yc.lolshop.bean.CartExample;
+import com.yc.lolshop.bean.User;
+import com.yc.lolshop.biz.BizException;
+import com.yc.lolshop.biz.UserBiz;
+import com.yc.lolshop.dao.CartMapper;
+
 @RestController
 @SessionAttributes("loginedUser")
 public class IndexAction {
@@ -19,6 +26,8 @@ public class IndexAction {
 	 * 
 	 * @Resource UserBiz ubiz;
 	 */
+	@Resource
+	UserBiz ubiz;
 
 	/*
 	 * @ModelAttribute public void init() {
@@ -42,6 +51,51 @@ public class IndexAction {
 	@GetMapping("tologin")
 	public ModelAndView tologin(ModelAndView mav) {
 		mav.setViewName("login");
+		return mav;
+	}
+	
+	@PostMapping("login")
+	public ModelAndView login(User user, ModelAndView mav, 
+			@SessionAttribute(name="uri",required=false) String uri,
+			HttpSession session) {
+		try {
+			User dbuser = ubiz.login(user);
+			/**
+			 * 	屏蔽之前的写法
+				// 将用户对象添加到会话
+				mav.addObject("loginedUser", dbuser);
+				
+			 * 	响应重定向添加会话属性, 使用
+			 * 		mav.addObject("loginedUser", dbuser);
+			 * 	会出现会话属性添加失败的问题, 所以改成下面的写法
+			 */
+			session.setAttribute("loginedUser", dbuser);
+			if(uri != null) {
+				// 这是拦截登录的情况
+				mav.setViewName("redirect:http://127.0.0.1" + uri);
+			} else {
+				// 这是用户的主动登录
+				mav.setViewName("index");
+			}
+			return index(mav);
+		} catch (BizException e) {
+			e.printStackTrace();
+			mav.addObject("msg", e.getMessage());
+			mav.setViewName("login");
+		}
+		return mav;
+	}
+	
+	@Resource
+	private CartMapper cm;
+	
+	@GetMapping("toCart")
+	public ModelAndView toCart(ModelAndView mav,
+			@SessionAttribute("loginedUser") User user) {
+		CartExample ce = new CartExample();
+		ce.createCriteria().andUidEqualTo(user.getId());
+		mav.addObject("clist",cm.selectByExample(ce));
+		mav.setViewName("BuyCar");
 		return mav;
 	}
 

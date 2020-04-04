@@ -7,6 +7,8 @@ public class Cart {
 
     private Double total;
 
+    private Integer uid;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class Cart {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 }

@@ -5,6 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="ciid" jdbcType="INTEGER" property="ciid" />
     <result column="total" jdbcType="DOUBLE" property="total" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, ciid, total
+    id, ciid, total, uid
   </sql>
   <select id="selectByExample" parameterType="com.yc.lolshop.bean.CartExample" resultMap="BaseResultMap">
     select
@@ -101,8 +102,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into cart (ciid, total)
-    values (#{ciid,jdbcType=INTEGER}, #{total,jdbcType=DOUBLE})
+    insert into cart (ciid, total, uid
+      )
+    values (#{ciid,jdbcType=INTEGER}, #{total,jdbcType=DOUBLE}, #{uid,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yc.lolshop.bean.Cart">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -116,6 +119,9 @@
       <if test="total != null">
         total,
       </if>
+      <if test="uid != null">
+        uid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="ciid != null">
@@ -123,6 +129,9 @@
       </if>
       <if test="total != null">
         #{total,jdbcType=DOUBLE},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -144,6 +153,9 @@
       <if test="record.total != null">
         total = #{record.total,jdbcType=DOUBLE},
       </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -153,7 +165,8 @@
     update cart
     set id = #{record.id,jdbcType=INTEGER},
       ciid = #{record.ciid,jdbcType=INTEGER},
-      total = #{record.total,jdbcType=DOUBLE}
+      total = #{record.total,jdbcType=DOUBLE},
+      uid = #{record.uid,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -167,13 +180,17 @@
       <if test="total != null">
         total = #{total,jdbcType=DOUBLE},
       </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yc.lolshop.bean.Cart">
     update cart
     set ciid = #{ciid,jdbcType=INTEGER},
-      total = #{total,jdbcType=DOUBLE}
+      total = #{total,jdbcType=DOUBLE},
+      uid = #{uid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

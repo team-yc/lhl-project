@@ -34,6 +34,7 @@ public class IndexAction {
 		if (mav.getViewName() == null) {
 			mav.setViewName("index");
 		}
+		System.out.println("===ViewName"+mav.getViewName());
 		return mav;
 	}
 
@@ -74,7 +75,7 @@ public class IndexAction {
 		return mav;
 	}
 	@GetMapping("out")
-	public ModelAndView out(ModelAndView mav,HttpSession session) {
+	public ModelAndView out(ModelAndView mav,@SessionAttribute("loginedUser") HttpSession session) {
 		session.setAttribute("loginedUser", null);
 		return index(mav);
 	}

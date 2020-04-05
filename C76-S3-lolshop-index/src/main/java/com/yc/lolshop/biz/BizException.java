@@ -18,22 +18,18 @@ public class BizException extends Exception {
 
 	public BizException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
-		// TODO Auto-generated constructor stub
 	}
 
 	public BizException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public BizException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 	public BizException(Throwable cause) {
 		super(cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getName() {
@@ -52,11 +48,4 @@ public class BizException extends Exception {
 		this.code = code;
 	}
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-=======
-=======
->>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
-}
->>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git

@@ -35,7 +35,7 @@ public class lolshopIndexApplication implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoginInterceptor())
 		// 添加拦截规则
-		.addPathPatterns("/addCart");
+		.addPathPatterns("/toCart");
 	}
 
 }

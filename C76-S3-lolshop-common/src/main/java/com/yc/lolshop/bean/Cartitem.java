@@ -1,6 +1,8 @@
 package com.yc.lolshop.bean;
 
+
 public class Cartitem {
+	
     private Integer id;
 
     private Integer uid;
@@ -10,6 +12,16 @@ public class Cartitem {
     private Integer count;
 
     private Double subtotal;
+    
+	private Product product;
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
     private Product product;
 

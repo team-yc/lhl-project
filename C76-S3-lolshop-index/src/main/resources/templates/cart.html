@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"> 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>LOL周边商城</title>
 <link href="css/common.css" rel="stylesheet" type="text/css">
 <link href="css/cart.css" rel="stylesheet" type="text/css">
@@ -56,52 +56,58 @@
 </script>
 <body>
 
-	<!-- 头部 -->
-	<div th:include="common/common::header"></div>
+<!-- 头部 -->
+<div th:include="common/common::header"></div>
 
-	<div class="container cart">
-		<div class="step step1">购物车列表</div>
-		<table>
-			<tbody>
-				<tr>
-					<th>图片</th>
-					<th>商品</th>
-					<th>单价</th>
-					<th>数量</th>
-					<th>小计</th>
-					<th>操作</th>
-				</tr>
 
-				<tr th:each="c : ${clist}">
-					<td width="60"><img th:src="${c.cartitem.product.image}">
+<div class="container cart">
+		<div class="step step1">
+				购物车列表
+		</div>
+			<table >
+				<tbody>
+					<tr>
+						<th>图片</th>
+						<th>商品</th>
+						<th>单价</th>
+						<th>数量</th>
+						<th>小计</th>
+						<th>操作</th>
+					</tr>
+
+				 <tr th:each="c : ${clist}">
+					<td width="60"> <img th:src="${c.cartitem.product.image}"> </td>
+					<td>
+						<a target="_blank">
+							<span th:text="${c.cartitem.product.pname}">Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml</span>
+						</a>
 					</td>
-					<td><a target="_blank"> <span
-							th:text="${c.cartitem.product.pname}">Rio 锐澳
-								水蜜桃味白兰地鸡尾酒（预调酒） 275ml</span>
-					</a></td>
 					<td><span th:text="${c.cartitem.product.price}">222</span></td>
-					<td class="quantity" width="60"><span
-						th:text="${c.cartitem.count}">222</span></td>
-					<td width="140"><span class="subtotal"><span
-							th:text="${c.cartitem.subtotal}">222</span></span></td>
+					<td class="quantity" width="60"><span th:text="${c.cartitem.count}">222</span></td>
+					<td width="140"><span class="subtotal"><span th:text="${c.cartitem.subtotal}">222</span></span></td>
 					<td><input type="button" value="删除"
 						onclick="dir_confirm(${p.pid})"></td>
 				</tr>
 			</tbody>
-		</table>
-
-		<dl id="giftItems" class="hidden" style="display: none;">
-		</dl>
-		<div class="total">
-			<em id="promotion"></em> 商品金额: <strong id="effectivePrice">2999</strong>
+			</table>
+				
+				<dl id="giftItems" class="hidden" style="display: none;">
+				</dl>
+					<div class="total">
+						<em id="promotion"></em>
+						商品金额: <strong id="effectivePrice">2999</strong>
+					</div>
+				<div style=" height:30px;font-size:15px;text-align: center;line-height:30px"> 
+					<a href="index.html" >暂未添加商品,点击浏览商品</a>
+				</div>
+				<div class="bottom">
+					<input type="button" value="清空购物车" onclick="dir_confirm()" >
+					<a href="pay.jsp" id="submit" class="submit">提交订单</a>
+				</div>
+			
 		</div>
-		<div class="bottom">
-			<input type="button" value="清空购物车" onclick="dir_confirm()">
-			<a href="pay.jsp" id="submit" class="submit">提交订单</a>
-		</div>
-
 	</div>
-	<!-- 脚部 -->
-	<div th:replace="common/common::.footer"></div>
+<!-- 脚部 -->
+<div th:replace="common/common::.footer"></div>
 </body>
 </html>

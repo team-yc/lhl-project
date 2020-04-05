@@ -13,21 +13,22 @@
 			</div>
 
 			<div class="header_left">
-				<span class="fl">你好， <span
-					th:if="${session.loginedUser} == null"> 请 <a href="tologin">登录</a>&nbsp;
-				</span> <span th:if="${session.loginedUser} != null"
-					th:text="${session.loginedUser.username}"> </span>
-				</span> <a href="toCart">购物车 </a>| <a href="">我的订单 </a>| <a href="out">退出
-				</a>
+				<span class="fl">你好， 
+					<span th:if="${session.loginedUser} == null"> 请
+						<a href="tologin">登录</a>&nbsp;
+					</span> 
+					<span th:if="${session.loginedUser} != null"
+						th:text="${session.loginedUser.username}"> 
+					</span> 
+				</span>
+				<a href="">购物车  </a>|
+				<a href="">我的订单  </a>|
+				<a href="out">退出 </a>
 			</div>
 		</div>
 		<div class="column">
-			<a href="index.html">商城首页</a>
-			<span th:each=" cc : ${cclist}">
-				<a th:href="'clist?id='+${cc.id}">
-					<span th:text="${cc.cname}">商城首页</span>
-				</a> 
-			</span>
+			<a href="index.html">商城首页</a> <a href="#">雕塑手办</a> <a href="#">毛绒玩偶</a>
+			<a href="#">男女服饰</a> <a href="#">珠宝首饰</a> <a href="#">其他</a>
 		</div>
 	</div>
 
@@ -40,9 +41,11 @@
 		</div>
 		<div class="span24">
 			<ul class="bottomNav">
-				<li><a>友情链接</a>：</li>
-				<li th:each="link:${links}">
-					<a th:text="${link.name}" th:href="${link.url}">关于我们</a> |
+				<li>
+					<a>友情链接</a>：
+				</li>
+				<li>
+					<a>关于我们</a> |
 				</li>
 			</ul>
 		</div>

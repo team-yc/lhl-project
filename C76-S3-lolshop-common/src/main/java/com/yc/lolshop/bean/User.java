@@ -1,7 +1,27 @@
 package com.yc.lolshop.bean;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+=======
 import java.io.Serializable;
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
+=======
+import java.io.Serializable;
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+import org.hibernate.validator.constraints.Length;
+
+public class User implements java.io.Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
+
+=======
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -12,6 +32,19 @@ public class User implements Serializable{
 
 	private Integer id;
 	
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
+=======
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+public class User implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
+	
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
 	@NotEmpty
     @Length(max=16,min=4)
     private String username;
@@ -21,11 +54,27 @@ public class User implements Serializable{
     private String password;
 	
     private String name;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
+=======
+    
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
     @NotEmpty
     @Email()
     private String email;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
+=======
+    
+>>>>>>> branch 'master' of https://github.com/team-yc/lhl-project.git
     @Length(min = 11,max = 11,message="电话号码必须11位")
     private String phone;
 

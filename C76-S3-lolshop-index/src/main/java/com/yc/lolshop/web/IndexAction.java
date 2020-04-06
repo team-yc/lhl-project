@@ -49,7 +49,7 @@ public class IndexAction {
 		return mav;
 	}
 
-	@GetMapping("tologin")
+	@GetMapping({"tologin","login.html"})
 	public ModelAndView tologin(ModelAndView mav) {
 		mav.setViewName("login");
 		return mav;
@@ -60,8 +60,6 @@ public class IndexAction {
 			HttpSession session) {
 		try {
 			User dbuser = ubiz.login(user);
-			// mav.addObject("loginedUser", dbuser);
-
 			session.setAttribute("loginedUser", dbuser);
 			if (uri != null) {
 				// 这是拦截登录的情况
@@ -87,6 +85,7 @@ public class IndexAction {
 
 	@GetMapping("out")
 	public ModelAndView out(ModelAndView mav, SessionStatus sessionStatus, HttpSession session) {
+		// spring mvc 移除会话
 		sessionStatus.setComplete();
 		return index(mav);
 	}
@@ -137,10 +136,21 @@ public class IndexAction {
 	}
 
 	@PostMapping("reg")
-	public ModelAndView reg(User user, String repassword, ModelAndView mav) {
-		// ubiz.reg(user,repassword);
+	@ResponseBody
+	public Result reg(@Valid User user, Errors errors, String repassword, ModelAndView mav) {
+		if (errors.hasFieldErrors()) {
+			return new Result(1, "注册失败", errors.getFieldErrors());
+		}
+		try {
+			ubiz.reg(user, repassword,errors);
+			return new Result(0, "用户注册成功");
+		} catch (BizException e) {
+			e.printStackTrace();
+			// 拒绝输入值
+			errors.rejectValue(e.getName(), "" + e.getCode(), e.getMessage());
+			return new Result(e.getCode(), "用户注册失败", errors.getFieldErrors());
+		}
 
-		return mav;
 	}
 
 	@Resource

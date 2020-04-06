@@ -5,11 +5,13 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.validation.Errors;
 
 import com.yc.lolshop.bean.User;
 import com.yc.lolshop.bean.UserExample;
 import com.yc.lolshop.dao.CartMapper;
 import com.yc.lolshop.dao.UserMapper;
+import com.yc.lolshop.vo.Result;
 
 @Service
 public class UserBiz {
@@ -62,6 +64,18 @@ public class UserBiz {
 		//修改
 		um.updateByExampleSelective(user,ue);
 		System.out.println("修改成功！");
+	}
+
+	public void reg(User user,String repassword, Errors errors) throws BizException {
+		UserExample ue = new UserExample();
+		ue.createCriteria().andUsernameEqualTo(user.getUsername());
+		if(um.countByExample(ue) > 0) {
+			throw new BizException(101, "username", "用户名已存在！");
+		}
+		if(repassword.equals(user.getPassword()) == false) {
+			throw new BizException(102, "password", "密码不一致！");
+		}
+		um.insert(user);
 	}
 
 }

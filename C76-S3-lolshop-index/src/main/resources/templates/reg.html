@@ -12,7 +12,8 @@
 td[id] {
 	color: red;
 }
-td{
+
+td {
 	width: 230px;
 }
 </style>
@@ -27,8 +28,8 @@ td{
 			contentType : false,
 			success : function(res) {
 				if (res.code == 0) {
-					location.href= "login.html";
 					alert('注册成功');
+					location.href = "login.html";
 				} else {
 					//去除所有已经存在的报错信息
 					$("td[id]").text("");
@@ -129,6 +130,15 @@ td{
 									<th>地址:</th>
 									<td>
 										<input type="text" name="addr" class="text" maxlength="200">
+									</td>
+								</tr>
+								<tr>
+									<th>注册身份:</th>
+									<td>
+										<select name="state">
+											<option selected="selected" value="0">用户</option>
+											<option value="1">商家</option>
+										</select>
 									</td>
 								</tr>
 								<tr>

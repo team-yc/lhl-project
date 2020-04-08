@@ -1,13 +1,11 @@
 package com.yc.lolshop.bean;
 
-public class Cartitem {
+public class Img {
     private Integer id;
-
-    private Integer uid;
 
     private Integer pid;
 
-    private Integer count;
+    private String url;
 
     public Integer getId() {
         return id;
@@ -15,14 +13,6 @@ public class Cartitem {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
     }
 
     public Integer getPid() {
@@ -33,11 +23,11 @@ public class Cartitem {
         this.pid = pid;
     }
 
-    public Integer getCount() {
-        return count;
+    public String getUrl() {
+        return url;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 }

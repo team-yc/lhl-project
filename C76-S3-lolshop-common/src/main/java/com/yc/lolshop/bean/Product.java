@@ -5,17 +5,19 @@ import java.util.Date;
 public class Product {
     private Integer id;
 
+    private Integer uid;
+
+    private Integer csid;
+
+    private Integer iid;
+
     private String pname;
 
     private Double price;
 
-    private String image;
-
     private String pdesc;
 
     private Date pdate;
-
-    private Integer csid;
 
     public Integer getId() {
         return id;
@@ -23,6 +25,30 @@ public class Product {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public Integer getCsid() {
+        return csid;
+    }
+
+    public void setCsid(Integer csid) {
+        this.csid = csid;
+    }
+
+    public Integer getIid() {
+        return iid;
+    }
+
+    public void setIid(Integer iid) {
+        this.iid = iid;
     }
 
     public String getPname() {
@@ -41,14 +67,6 @@ public class Product {
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image == null ? null : image.trim();
-    }
-
     public String getPdesc() {
         return pdesc;
     }
@@ -63,13 +81,5 @@ public class Product {
 
     public void setPdate(Date pdate) {
         this.pdate = pdate;
-    }
-
-    public Integer getCsid() {
-        return csid;
-    }
-
-    public void setCsid(Integer csid) {
-        this.csid = csid;
     }
 }

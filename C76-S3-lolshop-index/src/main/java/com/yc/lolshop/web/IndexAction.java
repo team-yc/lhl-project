@@ -16,11 +16,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.lolshop.vo.Result;
-import com.yc.lolshop.bean.CartExample;
 import com.yc.lolshop.bean.User;
 import com.yc.lolshop.biz.BizException;
 import com.yc.lolshop.biz.UserBiz;
-import com.yc.lolshop.dao.CartMapper;
 import com.yc.lolshop.dao.CategoryMapper;
 
 @RestController
@@ -151,18 +149,6 @@ public class IndexAction {
 			return new Result(e.getCode(), "用户注册失败", errors.getFieldErrors());
 		}
 
-	}
-
-	@Resource
-	private CartMapper cm;
-
-	@GetMapping("toCart")
-	public ModelAndView toCart(ModelAndView mav, @SessionAttribute("loginedUser") User user) {
-		CartExample ce = new CartExample();
-		ce.createCriteria().andUidEqualTo(user.getId());
-		mav.addObject("clist", cm.selectByExample(ce));
-		mav.setViewName("cart");
-		return mav;
 	}
 
 }

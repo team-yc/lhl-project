@@ -3,13 +3,15 @@ package com.yc.lolshop.bean;
 public class Addr {
     private Integer id;
 
+    private Integer uid;
+
     private String name;
 
     private String addr;
 
     private String phone;
 
-    private Integer uid;
+    private Integer type;
 
     public Integer getId() {
         return id;
@@ -17,6 +19,14 @@ public class Addr {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public String getName() {
@@ -43,11 +53,11 @@ public class Addr {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public Integer getUid() {
-        return uid;
+    public Integer getType() {
+        return type;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

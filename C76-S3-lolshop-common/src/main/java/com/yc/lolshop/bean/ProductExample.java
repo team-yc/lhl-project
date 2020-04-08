@@ -165,6 +165,186 @@ public class ProductExample {
             return (Criteria) this;
         }
 
+        public Criteria andUidIsNull() {
+            addCriterion("uid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidIsNotNull() {
+            addCriterion("uid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidEqualTo(Integer value) {
+            addCriterion("uid =", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidNotEqualTo(Integer value) {
+            addCriterion("uid <>", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidGreaterThan(Integer value) {
+            addCriterion("uid >", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("uid >=", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidLessThan(Integer value) {
+            addCriterion("uid <", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidLessThanOrEqualTo(Integer value) {
+            addCriterion("uid <=", value, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidIn(List<Integer> values) {
+            addCriterion("uid in", values, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidNotIn(List<Integer> values) {
+            addCriterion("uid not in", values, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidBetween(Integer value1, Integer value2) {
+            addCriterion("uid between", value1, value2, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUidNotBetween(Integer value1, Integer value2) {
+            addCriterion("uid not between", value1, value2, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidIsNull() {
+            addCriterion("csid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidIsNotNull() {
+            addCriterion("csid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidEqualTo(Integer value) {
+            addCriterion("csid =", value, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidNotEqualTo(Integer value) {
+            addCriterion("csid <>", value, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidGreaterThan(Integer value) {
+            addCriterion("csid >", value, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("csid >=", value, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidLessThan(Integer value) {
+            addCriterion("csid <", value, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidLessThanOrEqualTo(Integer value) {
+            addCriterion("csid <=", value, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidIn(List<Integer> values) {
+            addCriterion("csid in", values, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidNotIn(List<Integer> values) {
+            addCriterion("csid not in", values, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidBetween(Integer value1, Integer value2) {
+            addCriterion("csid between", value1, value2, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andCsidNotBetween(Integer value1, Integer value2) {
+            addCriterion("csid not between", value1, value2, "csid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidIsNull() {
+            addCriterion("iid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidIsNotNull() {
+            addCriterion("iid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidEqualTo(Integer value) {
+            addCriterion("iid =", value, "iid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidNotEqualTo(Integer value) {
+            addCriterion("iid <>", value, "iid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidGreaterThan(Integer value) {
+            addCriterion("iid >", value, "iid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("iid >=", value, "iid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidLessThan(Integer value) {
+            addCriterion("iid <", value, "iid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidLessThanOrEqualTo(Integer value) {
+            addCriterion("iid <=", value, "iid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidIn(List<Integer> values) {
+            addCriterion("iid in", values, "iid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidNotIn(List<Integer> values) {
+            addCriterion("iid not in", values, "iid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidBetween(Integer value1, Integer value2) {
+            addCriterion("iid between", value1, value2, "iid");
+            return (Criteria) this;
+        }
+
+        public Criteria andIidNotBetween(Integer value1, Integer value2) {
+            addCriterion("iid not between", value1, value2, "iid");
+            return (Criteria) this;
+        }
+
         public Criteria andPnameIsNull() {
             addCriterion("pname is null");
             return (Criteria) this;
@@ -295,76 +475,6 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andImageIsNull() {
-            addCriterion("image is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageIsNotNull() {
-            addCriterion("image is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageEqualTo(String value) {
-            addCriterion("image =", value, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageNotEqualTo(String value) {
-            addCriterion("image <>", value, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageGreaterThan(String value) {
-            addCriterion("image >", value, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageGreaterThanOrEqualTo(String value) {
-            addCriterion("image >=", value, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageLessThan(String value) {
-            addCriterion("image <", value, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageLessThanOrEqualTo(String value) {
-            addCriterion("image <=", value, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageLike(String value) {
-            addCriterion("image like", value, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageNotLike(String value) {
-            addCriterion("image not like", value, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageIn(List<String> values) {
-            addCriterion("image in", values, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageNotIn(List<String> values) {
-            addCriterion("image not in", values, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageBetween(String value1, String value2) {
-            addCriterion("image between", value1, value2, "image");
-            return (Criteria) this;
-        }
-
-        public Criteria andImageNotBetween(String value1, String value2) {
-            addCriterion("image not between", value1, value2, "image");
-            return (Criteria) this;
-        }
-
         public Criteria andPdescIsNull() {
             addCriterion("pdesc is null");
             return (Criteria) this;
@@ -492,66 +602,6 @@ public class ProductExample {
 
         public Criteria andPdateNotBetween(Date value1, Date value2) {
             addCriterion("pdate not between", value1, value2, "pdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidIsNull() {
-            addCriterion("csid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidIsNotNull() {
-            addCriterion("csid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidEqualTo(Integer value) {
-            addCriterion("csid =", value, "csid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidNotEqualTo(Integer value) {
-            addCriterion("csid <>", value, "csid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidGreaterThan(Integer value) {
-            addCriterion("csid >", value, "csid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("csid >=", value, "csid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidLessThan(Integer value) {
-            addCriterion("csid <", value, "csid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidLessThanOrEqualTo(Integer value) {
-            addCriterion("csid <=", value, "csid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidIn(List<Integer> values) {
-            addCriterion("csid in", values, "csid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidNotIn(List<Integer> values) {
-            addCriterion("csid not in", values, "csid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidBetween(Integer value1, Integer value2) {
-            addCriterion("csid between", value1, value2, "csid");
-            return (Criteria) this;
-        }
-
-        public Criteria andCsidNotBetween(Integer value1, Integer value2) {
-            addCriterion("csid not between", value1, value2, "csid");
             return (Criteria) this;
         }
     }

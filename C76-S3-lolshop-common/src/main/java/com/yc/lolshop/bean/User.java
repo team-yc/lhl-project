@@ -28,11 +28,9 @@ public class User implements Serializable{
 
     private String sex;
 
-    private Integer state;
-
-    private String code;
-
     private String addr;
+    
+    private Integer state;
 
     public Integer getId() {
         return id;
@@ -96,14 +94,6 @@ public class User implements Serializable{
 
     public void setState(Integer state) {
         this.state = state;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
     }
 
     public String getAddr() {

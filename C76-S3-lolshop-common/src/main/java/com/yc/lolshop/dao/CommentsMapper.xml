@@ -4,10 +4,11 @@
   <resultMap id="BaseResultMap" type="com.yc.lolshop.bean.Comments">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="suid" jdbcType="INTEGER" property="suid" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="cdate" jdbcType="DATE" property="cdate" />
     <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, uid, pid, username, cdate, content
+    id, uid, suid, pid, username, content, date
   </sql>
   <select id="selectByExample" parameterType="com.yc.lolshop.bean.CommentsExample" resultMap="BaseResultMap">
     select
@@ -104,10 +105,12 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into comments (uid, pid, username, 
-      cdate, content)
-    values (#{uid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
-      #{cdate,jdbcType=DATE}, #{content,jdbcType=VARCHAR})
+    insert into comments (uid, suid, pid, 
+      username, content, date
+      )
+    values (#{uid,jdbcType=INTEGER}, #{suid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yc.lolshop.bean.Comments">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -118,22 +121,28 @@
       <if test="uid != null">
         uid,
       </if>
+      <if test="suid != null">
+        suid,
+      </if>
       <if test="pid != null">
         pid,
       </if>
       <if test="username != null">
         username,
       </if>
-      <if test="cdate != null">
-        cdate,
-      </if>
       <if test="content != null">
         content,
+      </if>
+      <if test="date != null">
+        date,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="uid != null">
         #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="suid != null">
+        #{suid,jdbcType=INTEGER},
       </if>
       <if test="pid != null">
         #{pid,jdbcType=INTEGER},
@@ -141,11 +150,11 @@
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="cdate != null">
-        #{cdate,jdbcType=DATE},
-      </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -164,17 +173,20 @@
       <if test="record.uid != null">
         uid = #{record.uid,jdbcType=INTEGER},
       </if>
+      <if test="record.suid != null">
+        suid = #{record.suid,jdbcType=INTEGER},
+      </if>
       <if test="record.pid != null">
         pid = #{record.pid,jdbcType=INTEGER},
       </if>
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.cdate != null">
-        cdate = #{record.cdate,jdbcType=DATE},
-      </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.date != null">
+        date = #{record.date,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -185,10 +197,11 @@
     update comments
     set id = #{record.id,jdbcType=INTEGER},
       uid = #{record.uid,jdbcType=INTEGER},
+      suid = #{record.suid,jdbcType=INTEGER},
       pid = #{record.pid,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
-      cdate = #{record.cdate,jdbcType=DATE},
-      content = #{record.content,jdbcType=VARCHAR}
+      content = #{record.content,jdbcType=VARCHAR},
+      date = #{record.date,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -199,17 +212,20 @@
       <if test="uid != null">
         uid = #{uid,jdbcType=INTEGER},
       </if>
+      <if test="suid != null">
+        suid = #{suid,jdbcType=INTEGER},
+      </if>
       <if test="pid != null">
         pid = #{pid,jdbcType=INTEGER},
       </if>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="cdate != null">
-        cdate = #{cdate,jdbcType=DATE},
-      </if>
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -217,10 +233,11 @@
   <update id="updateByPrimaryKey" parameterType="com.yc.lolshop.bean.Comments">
     update comments
     set uid = #{uid,jdbcType=INTEGER},
+      suid = #{suid,jdbcType=INTEGER},
       pid = #{pid,jdbcType=INTEGER},
       username = #{username,jdbcType=VARCHAR},
-      cdate = #{cdate,jdbcType=DATE},
-      content = #{content,jdbcType=VARCHAR}
+      content = #{content,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -343,66 +343,6 @@ public class CartitemExample {
             addCriterion("count not between", value1, value2, "count");
             return (Criteria) this;
         }
-
-        public Criteria andSubtotalIsNull() {
-            addCriterion("subTotal is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalIsNotNull() {
-            addCriterion("subTotal is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalEqualTo(Double value) {
-            addCriterion("subTotal =", value, "subtotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalNotEqualTo(Double value) {
-            addCriterion("subTotal <>", value, "subtotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalGreaterThan(Double value) {
-            addCriterion("subTotal >", value, "subtotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalGreaterThanOrEqualTo(Double value) {
-            addCriterion("subTotal >=", value, "subtotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalLessThan(Double value) {
-            addCriterion("subTotal <", value, "subtotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalLessThanOrEqualTo(Double value) {
-            addCriterion("subTotal <=", value, "subtotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalIn(List<Double> values) {
-            addCriterion("subTotal in", values, "subtotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalNotIn(List<Double> values) {
-            addCriterion("subTotal not in", values, "subtotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalBetween(Double value1, Double value2) {
-            addCriterion("subTotal between", value1, value2, "subtotal");
-            return (Criteria) this;
-        }
-
-        public Criteria andSubtotalNotBetween(Double value1, Double value2) {
-            addCriterion("subTotal not between", value1, value2, "subtotal");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {

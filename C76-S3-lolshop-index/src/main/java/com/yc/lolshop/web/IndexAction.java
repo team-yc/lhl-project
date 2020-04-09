@@ -151,4 +151,9 @@ public class IndexAction {
 
 	}
 
+	@GetMapping("myinfo.html")
+	public ModelAndView myinfo(ModelAndView mav) {
+		mav.setViewName("myinfo");
+		return mav;
+	}
 }

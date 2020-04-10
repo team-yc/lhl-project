@@ -1,7 +1,5 @@
 package com.yc.lolshop.web;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -18,12 +16,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.lolshop.vo.Result;
-import com.yc.lolshop.bean.Cartitem;
-import com.yc.lolshop.bean.Img;
 import com.yc.lolshop.bean.CartitemExample;
-import com.yc.lolshop.bean.Category;
-import com.yc.lolshop.bean.Categorysecond;
-import com.yc.lolshop.bean.Product;
 import com.yc.lolshop.bean.User;
 import com.yc.lolshop.biz.BizException;
 import com.yc.lolshop.biz.UserBiz;
@@ -38,15 +31,13 @@ public class IndexAction {
 	@Resource
 	IlolshopBackAction ilba;
 	@Resource
-	lolshopBackAction lba;
-
-	@Resource
 	private CategoryMapper cgm;
 
 	@ModelAttribute
 	public void init(ModelAndView mav) {
 		mav.addObject("cclist", ilba.getCc());
 		mav.addObject("links", ilba.getlinks());
+		mav.addObject("advs", ilba.getadvs());
 	}
 
 	@GetMapping({ "/", "index", "index.html" })
@@ -55,17 +46,7 @@ public class IndexAction {
 		if (mav.getViewName() == null) {
 			mav.setViewName("index");
 		}
-		return mav;
-	}
-
-	@GetMapping("clist")
-	public ModelAndView clist(int id, ModelAndView mav) {
-		mav.addObject("pclist", ilba.getShop(id));
-		List<Product> list = ilba.getShop(id);
-		System.out.println("-----" + list.get(0).getPname());
-		mav.addObject("csnlist", ilba.getPc(id));
-		mav.addObject("cclist2", lba.getCc().get(id - 1));
-		mav.setViewName("clist");
+		System.out.println("===ViewName" + mav.getViewName());
 		return mav;
 	}
 
@@ -80,8 +61,6 @@ public class IndexAction {
 			HttpSession session) {
 		try {
 			User dbuser = ubiz.login(user);
-			// mav.addObject("loginedUser", dbuser);
-
 			session.setAttribute("loginedUser", dbuser);
 			if (uri != null) {
 				// 这是拦截登录的情况
@@ -107,6 +86,7 @@ public class IndexAction {
 
 	@GetMapping("out")
 	public ModelAndView out(ModelAndView mav, SessionStatus sessionStatus, HttpSession session) {
+		// spring mvc 移除会话
 		sessionStatus.setComplete();
 		return index(mav);
 	}
@@ -163,7 +143,7 @@ public class IndexAction {
 			return new Result(1, "注册失败", errors.getFieldErrors());
 		}
 		try {
-			ubiz.reg(user, repassword, errors);
+			ubiz.reg(user, repassword);
 			return new Result(0, "用户注册成功");
 		} catch (BizException e) {
 			e.printStackTrace();
@@ -171,26 +151,7 @@ public class IndexAction {
 			errors.rejectValue(e.getName(), "" + e.getCode(), e.getMessage());
 			return new Result(e.getCode(), "用户注册失败", errors.getFieldErrors());
 		}
-	}
 
-	@Resource
-	private CartitemMapper cm;
-
-	@GetMapping("toCart")
-	public ModelAndView toCart(ModelAndView mav, @SessionAttribute("loginedUser") User user) {
-		CartitemExample cie = new CartitemExample();
-		cie.createCriteria().andUidEqualTo(user.getId());
-		List<Cartitem> list = cm.selectByExample(cie);
-		mav.addObject("clist", cm.selectByExample(cie));
-		System.out.println("=======================");
-		List<Img> imgs = list.get(1).getProduct().getImg();
-		for (Img i : imgs) {
-			System.out.println("==" + i.toString());
-		}
-
-		mav.addObject("total",cm.total(user.getId()));
-		mav.setViewName("cart");
-		return mav;
 	}
 
 	@GetMapping("myinfo.html")
@@ -198,5 +159,23 @@ public class IndexAction {
 		mav.setViewName("myinfo");
 		return mav;
 	}
+	
+	@Resource
+	private CartitemMapper cm;
 
+	@GetMapping("toCart")
+	public ModelAndView toCart(ModelAndView mav,
+			@SessionAttribute("loginedUser") User user) {
+		CartitemExample cie = new CartitemExample();
+		cie.createCriteria().andUidEqualTo(user.getId());
+		mav.addObject("clist", cm.selectByExample(cie));
+		//mav.addObject("total",cm.total(user.getId()));
+		mav.setViewName("cart");
+		return mav;
+	}
+	@GetMapping("advertising.html")
+	public ModelAndView toCart(ModelAndView mav) {
+		mav.setViewName("advertising");
+		return mav;
+	}
 }

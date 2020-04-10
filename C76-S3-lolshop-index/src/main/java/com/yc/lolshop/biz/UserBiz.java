@@ -62,7 +62,7 @@ public class UserBiz {
 		System.out.println("修改成功！");
 	}
 
-	public void reg(User user,String repassword, Errors errors) throws BizException {
+	public void reg(User user,String repassword) throws BizException {
 		UserExample ue = new UserExample();
 		ue.createCriteria().andUsernameEqualTo(user.getUsername());
 		if(um.countByExample(ue) > 0) {

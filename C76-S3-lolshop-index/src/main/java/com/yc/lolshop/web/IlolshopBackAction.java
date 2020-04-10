@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.yc.lolshop.bean.Advertises;
 import com.yc.lolshop.bean.Category;
 import com.yc.lolshop.bean.Categorysecond;
 import com.yc.lolshop.bean.Internet;
@@ -20,6 +21,9 @@ public interface IlolshopBackAction {
 	
 	@GetMapping("getlinks")
 	public List<Internet> getlinks();
+
+	@GetMapping("getadvs")
+	public List<Advertises> getadvs();
 	
 	
 	@GetMapping("clist")

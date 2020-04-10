@@ -2,33 +2,35 @@ package com.yc.lolshop.bean;
 
 import java.util.List;
 
-public class Category implements java.io.Serializable{
-	private static final long serialVersionUID = 1L;
-	
+public class Category {
     private Integer id;
 
     private String cname;
 
     private String cimg;
-
     
     /**
-     * 	子类集合
+     * 	子类集合Category
      */
     private List<Category> children;
-    
+
+    public Category(int id, String cname) {
+		this.id = id;
+		this.cname = cname;
+	}
+
 	public List<Category> getChildren() {
 		return children;
 	}
-	
+
 	public void setChildren(List<Category> children) {
 		this.children = children;
 	}
-	
-    public Integer getId() {
+
+	public Integer getId() {
         return id;
     }
-    
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -48,10 +50,4 @@ public class Category implements java.io.Serializable{
     public void setCimg(String cimg) {
         this.cimg = cimg == null ? null : cimg.trim();
     }
-    
-    public Category(Integer id, String name) {
-		super();
-		this.id = id;
-		this.cname = name;
-	}
 }

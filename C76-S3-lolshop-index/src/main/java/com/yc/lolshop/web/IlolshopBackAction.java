@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yc.lolshop.bean.Category;
+import com.yc.lolshop.bean.Categorysecond;
 import com.yc.lolshop.bean.Internet;
 
 
@@ -17,5 +20,9 @@ public interface IlolshopBackAction {
 	
 	@GetMapping("getlinks")
 	public List<Internet> getlinks();
+	
+	
+	@PostMapping("clist")
+	public List<Categorysecond> getCsn(@RequestParam("id")int id);
 	
 }

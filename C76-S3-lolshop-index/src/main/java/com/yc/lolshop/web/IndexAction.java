@@ -1,5 +1,7 @@
 package com.yc.lolshop.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -16,11 +18,12 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.lolshop.vo.Result;
-import com.yc.lolshop.bean.CartExample;
+import com.yc.lolshop.bean.Cartitem;
+import com.yc.lolshop.bean.CartitemExample;
 import com.yc.lolshop.bean.User;
 import com.yc.lolshop.biz.BizException;
 import com.yc.lolshop.biz.UserBiz;
-import com.yc.lolshop.dao.CartMapper;
+import com.yc.lolshop.dao.CartitemMapper;
 import com.yc.lolshop.dao.CategoryMapper;
 
 @RestController
@@ -30,6 +33,9 @@ public class IndexAction {
 	UserBiz ubiz;
 	@Resource
 	IlolshopBackAction ilba;
+	@Resource
+	lolshopBackAction lba;
+	
 	@Resource
 	private CategoryMapper cgm;
 
@@ -48,8 +54,17 @@ public class IndexAction {
 		System.out.println("===ViewName" + mav.getViewName());
 		return mav;
 	}
-
-	@GetMapping({"tologin","login.html"})
+	
+	@GetMapping("clist")
+	public ModelAndView clist(int id, ModelAndView mav) {
+		mav.addObject("csnlist",ilba.getCsn(id) );
+		mav.addObject("cclist2",lba.getCc().get(id-1));
+		mav.setViewName("clist");
+		return mav;
+	}
+	
+	
+	@GetMapping("tologin")
 	public ModelAndView tologin(ModelAndView mav) {
 		mav.setViewName("login");
 		return mav;
@@ -60,6 +75,8 @@ public class IndexAction {
 			HttpSession session) {
 		try {
 			User dbuser = ubiz.login(user);
+			// mav.addObject("loginedUser", dbuser);
+
 			session.setAttribute("loginedUser", dbuser);
 			if (uri != null) {
 				// 这是拦截登录的情况
@@ -85,7 +102,6 @@ public class IndexAction {
 
 	@GetMapping("out")
 	public ModelAndView out(ModelAndView mav, SessionStatus sessionStatus, HttpSession session) {
-		// spring mvc 移除会话
 		sessionStatus.setComplete();
 		return index(mav);
 	}
@@ -150,19 +166,27 @@ public class IndexAction {
 			errors.rejectValue(e.getName(), "" + e.getCode(), e.getMessage());
 			return new Result(e.getCode(), "用户注册失败", errors.getFieldErrors());
 		}
-
 	}
 
 	@Resource
-	private CartMapper cm;
+	private CartitemMapper cm;
 
 	@GetMapping("toCart")
 	public ModelAndView toCart(ModelAndView mav, @SessionAttribute("loginedUser") User user) {
-		CartExample ce = new CartExample();
-		ce.createCriteria().andUidEqualTo(user.getId());
-		mav.addObject("clist", cm.selectByExample(ce));
+		CartitemExample cie = new CartitemExample();
+		cie.createCriteria().andUidEqualTo(user.getId());
+		List<Cartitem> list = cm.selectByExample(cie);
+		mav.addObject("clist", cm.selectByExample(cie));
+		System.out.println("clist"+list.get(0).getProduct().getPname());
+		mav.addObject("total",cm.total(user.getId()));
 		mav.setViewName("cart");
 		return mav;
 	}
+	@GetMapping("myinfo.html")
+	public ModelAndView myinfo(ModelAndView mav) {
+		mav.setViewName("myinfo");
+		return mav;
+	}
+
 
 }

@@ -9,17 +9,13 @@ import org.springframework.validation.Errors;
 
 import com.yc.lolshop.bean.User;
 import com.yc.lolshop.bean.UserExample;
-import com.yc.lolshop.dao.CartMapper;
 import com.yc.lolshop.dao.UserMapper;
-import com.yc.lolshop.vo.Result;
 
 @Service
 public class UserBiz {
 
 	@Resource
 	UserMapper um;
-	@Resource
-	CartMapper cm;
 
 	public User login(User user) throws BizException {
 		UserExample ue = new UserExample();

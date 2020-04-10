@@ -30,8 +30,6 @@ public class User implements Serializable{
 
     private Integer state;
 
-    private String code;
-
     private String addr;
 
     public Integer getId() {
@@ -96,14 +94,6 @@ public class User implements Serializable{
 
     public void setState(Integer state) {
         this.state = state;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code == null ? null : code.trim();
     }
 
     public String getAddr() {

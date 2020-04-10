@@ -2,7 +2,6 @@ package com.yc.lolshop.bean;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class CommentsExample {
@@ -104,32 +103,6 @@ public class CommentsExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -249,6 +222,66 @@ public class CommentsExample {
 
         public Criteria andUidNotBetween(Integer value1, Integer value2) {
             addCriterion("uid not between", value1, value2, "uid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidIsNull() {
+            addCriterion("suid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidIsNotNull() {
+            addCriterion("suid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidEqualTo(Integer value) {
+            addCriterion("suid =", value, "suid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidNotEqualTo(Integer value) {
+            addCriterion("suid <>", value, "suid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidGreaterThan(Integer value) {
+            addCriterion("suid >", value, "suid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("suid >=", value, "suid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidLessThan(Integer value) {
+            addCriterion("suid <", value, "suid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidLessThanOrEqualTo(Integer value) {
+            addCriterion("suid <=", value, "suid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidIn(List<Integer> values) {
+            addCriterion("suid in", values, "suid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidNotIn(List<Integer> values) {
+            addCriterion("suid not in", values, "suid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidBetween(Integer value1, Integer value2) {
+            addCriterion("suid between", value1, value2, "suid");
+            return (Criteria) this;
+        }
+
+        public Criteria andSuidNotBetween(Integer value1, Integer value2) {
+            addCriterion("suid not between", value1, value2, "suid");
             return (Criteria) this;
         }
 
@@ -382,66 +415,6 @@ public class CommentsExample {
             return (Criteria) this;
         }
 
-        public Criteria andCdateIsNull() {
-            addCriterion("cdate is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateIsNotNull() {
-            addCriterion("cdate is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateEqualTo(Date value) {
-            addCriterionForJDBCDate("cdate =", value, "cdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("cdate <>", value, "cdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateGreaterThan(Date value) {
-            addCriterionForJDBCDate("cdate >", value, "cdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("cdate >=", value, "cdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateLessThan(Date value) {
-            addCriterionForJDBCDate("cdate <", value, "cdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("cdate <=", value, "cdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateIn(List<Date> values) {
-            addCriterionForJDBCDate("cdate in", values, "cdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("cdate not in", values, "cdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("cdate between", value1, value2, "cdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCdateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("cdate not between", value1, value2, "cdate");
-            return (Criteria) this;
-        }
-
         public Criteria andContentIsNull() {
             addCriterion("content is null");
             return (Criteria) this;
@@ -509,6 +482,66 @@ public class CommentsExample {
 
         public Criteria andContentNotBetween(String value1, String value2) {
             addCriterion("content not between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateIsNull() {
+            addCriterion("date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateIsNotNull() {
+            addCriterion("date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateEqualTo(Date value) {
+            addCriterion("date =", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateNotEqualTo(Date value) {
+            addCriterion("date <>", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateGreaterThan(Date value) {
+            addCriterion("date >", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("date >=", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateLessThan(Date value) {
+            addCriterion("date <", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateLessThanOrEqualTo(Date value) {
+            addCriterion("date <=", value, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateIn(List<Date> values) {
+            addCriterion("date in", values, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateNotIn(List<Date> values) {
+            addCriterion("date not in", values, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateBetween(Date value1, Date value2) {
+            addCriterion("date between", value1, value2, "date");
+            return (Criteria) this;
+        }
+
+        public Criteria andDateNotBetween(Date value1, Date value2) {
+            addCriterion("date not between", value1, value2, "date");
             return (Criteria) this;
         }
     }

@@ -13,11 +13,17 @@
 			</div>
 
 			<div class="header_left">
-				<span class="fl">你好， <span
-					th:if="${session.loginedUser} == null"> 请 <a href="tologin">登录</a>&nbsp;
-				</span> <span th:if="${session.loginedUser} != null"
-					th:text="${session.loginedUser.username}"> </span>
-				</span> <a href="toCart">购物车 </a>| <a href="">我的订单 </a>| <a href="out">退出
+				<span class="fl">
+					你好，
+					<span th:if="${session.loginedUser} == null">
+						请<a href="tologin">登录</a>&nbsp;
+					</span>
+					<span th:if="${session.loginedUser} != null">
+						<span th:text="${session.loginedUser.username}"></span>
+						<a href="myinfo.html">个人中心</a>|
+					</span>
+				</span>
+				<a href="toCart">购物车 </a>| <a href="">我的订单 </a>| <a href="out">退出
 				</a>
 			</div>
 		</div>
@@ -25,8 +31,9 @@
 			<a href="index.html">商城首页</a> 
 			<span th:each=" cc : ${cclist}">
 				<a th:href="'clist?id='+${cc.id}">
-					<span th:text="${cc.cname}">商城首页</span>
+					<span th:text="${cc.cname}">雕塑手办</span>
 				</a> 
+				
 			</span>
 		</div>
 	</div>

@@ -4,8 +4,15 @@ import com.yc.lolshop.bean.Cartitem;
 import com.yc.lolshop.bean.CartitemExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 public interface CartitemMapper {
+	
+	@Select("select sum(p.price * c.count) as total "
+			+ "from product as p ,cartitem as c " 
+			+ "	where p.id = c.pid and c.uid = #{uid}")
+	double total(int uid);
+	
     long countByExample(CartitemExample example);
 
     int deleteByExample(CartitemExample example);

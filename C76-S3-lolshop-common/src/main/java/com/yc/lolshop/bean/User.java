@@ -28,9 +28,9 @@ public class User implements Serializable{
 
     private String sex;
 
-    private Integer state;
-
     private String addr;
+    
+    private Integer state;
 
     public Integer getId() {
         return id;

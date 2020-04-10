@@ -16,9 +16,11 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.lolshop.vo.Result;
+import com.yc.lolshop.bean.CartitemExample;
 import com.yc.lolshop.bean.User;
 import com.yc.lolshop.biz.BizException;
 import com.yc.lolshop.biz.UserBiz;
+import com.yc.lolshop.dao.CartitemMapper;
 import com.yc.lolshop.dao.CategoryMapper;
 
 @RestController
@@ -35,6 +37,7 @@ public class IndexAction {
 	public void init(ModelAndView mav) {
 		mav.addObject("cclist", ilba.getCc());
 		mav.addObject("links", ilba.getlinks());
+		mav.addObject("advs", ilba.getadvs());
 	}
 
 	@GetMapping({ "/", "index", "index.html" })
@@ -47,7 +50,7 @@ public class IndexAction {
 		return mav;
 	}
 
-	@GetMapping({"tologin","login.html"})
+	@GetMapping({ "tologin", "login.html" })
 	public ModelAndView tologin(ModelAndView mav) {
 		mav.setViewName("login");
 		return mav;
@@ -140,7 +143,7 @@ public class IndexAction {
 			return new Result(1, "注册失败", errors.getFieldErrors());
 		}
 		try {
-			ubiz.reg(user, repassword,errors);
+			ubiz.reg(user, repassword);
 			return new Result(0, "用户注册成功");
 		} catch (BizException e) {
 			e.printStackTrace();
@@ -154,6 +157,25 @@ public class IndexAction {
 	@GetMapping("myinfo.html")
 	public ModelAndView myinfo(ModelAndView mav) {
 		mav.setViewName("myinfo");
+		return mav;
+	}
+	
+	@Resource
+	private CartitemMapper cm;
+
+	@GetMapping("toCart")
+	public ModelAndView toCart(ModelAndView mav,
+			@SessionAttribute("loginedUser") User user) {
+		CartitemExample cie = new CartitemExample();
+		cie.createCriteria().andUidEqualTo(user.getId());
+		mav.addObject("clist", cm.selectByExample(cie));
+		//mav.addObject("total",cm.total(user.getId()));
+		mav.setViewName("cart");
+		return mav;
+	}
+	@GetMapping("advertising.html")
+	public ModelAndView toCart(ModelAndView mav) {
+		mav.setViewName("advertising");
 		return mav;
 	}
 }

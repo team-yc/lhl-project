@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.yc.lolshop.bean.Advertises;
 import com.yc.lolshop.bean.Category;
 import com.yc.lolshop.bean.Internet;
 
@@ -27,7 +28,11 @@ public class lolshopBackAction implements IlolshopBackAction {
 
 	@Override
 	public List<Internet> getlinks() {
-		
+		return null;
+	}
+
+	@Override
+	public List<Advertises> getadvs() {
 		return null;
 	}
 

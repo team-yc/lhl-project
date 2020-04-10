@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="css/header.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
-
 </head>
 <script type="text/javascript">
 	function change(pid){
@@ -55,11 +54,8 @@
 	
 </script>
 <body>
-
 	<!-- 头部 -->
 	<div th:include="common/common::header"></div>
-
-
 	<div class="container cart">
 		<div class="step step1">购物车列表</div>
 		<table>
@@ -72,35 +68,47 @@
 					<th>小计</th>
 					<th>操作</th>
 				</tr>
-
 				<tr th:each="c : ${clist}">
-					<td width="60"><img th:src="${c.cartitem.product.image}">
+					<td width="60">
+						<img>
 					</td>
-					<td><a target="_blank"> <span
-							th:text="${c.cartitem.product.pname}">Rio 锐澳
-								水蜜桃味白兰地鸡尾酒（预调酒） 275ml</span>
-					</a></td>
-					<td><span th:text="${c.cartitem.product.price}">222</span></td>
-					<td class="quantity" width="60"><span
-						th:text="${c.cartitem.count}">222</span></td>
-					<td width="140"><span class="subtotal"><span
-							th:text="${c.cartitem.subtotal}">222</span></span></td>
-					<td><input type="button" value="删除"
-						onclick="dir_confirm(${p.pid})"></td>
+					<td>
+						<a target="_blank">
+							<span th:text="${c.product.id}"></span>
+							<span>Rio 锐澳 水蜜桃味白兰地鸡尾酒（预调酒） 275ml</span>
+						</a>
+					</td>
+					<td>
+						<span>222</span>
+					</td>
+					<td class="quantity" width="60">
+						<span>222</span>
+					</td>
+					<td width="80">
+						<span class="subtotal">
+							<span>222</span>
+						</span>
+					</td>
+					<td style="width: 100px">
+						<input type="button" value="删除" style="width: 40px" onclick="dir_confirm(${p.pid})">
+						<input type="button" value="购买" onclick="dir_confirm(${p.pid})" style="width: 40px">
+					</td>
 				</tr>
 			</tbody>
 		</table>
-
 		<dl id="giftItems" class="hidden" style="display: none;">
 		</dl>
 		<div class="total">
-			<em id="promotion"></em> 商品金额: <strong id="effectivePrice">2999</strong>
+			<em id="promotion"></em>
+			商品金额:
+			<strong id="effectivePrice">
+				<span>2999</span>
+			</strong>
 		</div>
 		<div class="bottom">
 			<input type="button" value="清空购物车" onclick="dir_confirm()">
 			<a href="pay.jsp" id="submit" class="submit">提交订单</a>
 		</div>
-
 	</div>
 	<!-- 脚部 -->
 	<div th:replace="common/common::.footer"></div>

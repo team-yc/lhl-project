@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>广告</title>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script src="js/gg.js"></script>
+</head>
+<!-- 浮动广告代码开始 -->
+<style>
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+img {
+	height: 200px;
+}
+</style>
+<script type="text/javascript">
+	
+</script>
+<body>
+	<div id="ShowAD" style="position: absolute; z-index: 100;">
+		<div style="width: 257; height: 18px; font-size: 14px; font-weight: bold; text-align: left; CURSOR: hand;">
+			<a href="javascript:void(0)" onclick="closead()">
+				<font color=ff0000 class="pointer">关闭</font>
+			</a>
+		</div>
+		<div id="img">
+			<a th:each="adv : ${advs}" th:href="${adv.url}" target="_blank">
+				<img th:src="${adv.img}">
+			</a>
+		</div>
+	</div>
+</body>
+<!-- 浮动广告代码结束 -->

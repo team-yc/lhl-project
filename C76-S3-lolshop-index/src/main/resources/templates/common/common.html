@@ -11,6 +11,7 @@
 			<div class="logo">
 				<img src="img/logo.png" />
 			</div>
+
 			<div class="header_left">
 				<span class="fl">
 					你好，
@@ -19,26 +20,24 @@
 					</span>
 					<span th:if="${session.loginedUser} != null">
 						<span th:text="${session.loginedUser.username}"></span>
-						<a href="myinfo.html">个人中心</a>
+						<a href="myinfo.html">个人中心</a>|
 					</span>
 				</span>
-				<a href="toreg">注册 </a>
-				<a href="toCart">购物车 </a>
-				|
-				<a href="">我的订单 </a>
-				|
-				<a href="out">退出 </a>
+				<a href="toCart">购物车 </a>| <a href="">我的订单 </a>| <a href="out">退出
+				</a>
 			</div>
 		</div>
 		<div class="column">
-			<a href="index.html">商城首页</a>
+			<a href="index.html">商城首页</a> 
 			<span th:each=" cc : ${cclist}">
 				<a th:href="'clist?id='+${cc.id}">
-					<span th:text="${cc.cname}">商城首页</span>
-				</a>
+					<span th:text="${cc.cname}">雕塑手办</span>
+				</a> 
+				
 			</span>
 		</div>
 	</div>
+
 	<!-- footer 尾部-->
 	<div class="container footer">
 		<div class="span24">
@@ -48,14 +47,9 @@
 		</div>
 		<div class="span24">
 			<ul class="bottomNav">
-				<li>
-					<a>友情链接</a>
-					：
-				</li>
-				<li th:each="link:${links}">
-					<a th:href="${link.url}" th:text="${link.name}">关于我们</a>
-					|
-				</li>
+				<li><a>友情链接</a>：</li>
+				<li th:each="link:${links}"><a th:href="${link.url}"
+					th:text="${link.name}">关于我们</a> |</li>
 			</ul>
 		</div>
 		<div class="span24">

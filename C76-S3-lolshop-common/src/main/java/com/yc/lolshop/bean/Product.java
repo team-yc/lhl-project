@@ -1,9 +1,13 @@
 package com.yc.lolshop.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Product {
-    private Integer id;
+public class Product implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private Integer uid;
 
@@ -18,8 +22,18 @@ public class Product {
     private String pdesc;
 
     private Date pdate;
+    
+    private Img img;
+    
+    public Img getImg() {
+		return img;
+	}
 
-    public Integer getId() {
+	public void setImg(Img img) {
+		this.img = img;
+	}
+
+	public Integer getId() {
         return id;
     }
 

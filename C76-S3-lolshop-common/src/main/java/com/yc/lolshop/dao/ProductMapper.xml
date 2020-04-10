@@ -10,6 +10,9 @@
     <result column="price" jdbcType="DOUBLE" property="price" />
     <result column="pdesc" jdbcType="VARCHAR" property="pdesc" />
     <result column="pdate" jdbcType="TIMESTAMP" property="pdate" />
+    <association property="img" column="iid" 
+   	 	select="com.yc.lolshop.dao.ImgMapper.selectByPrimaryKey">
+   	</association>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>

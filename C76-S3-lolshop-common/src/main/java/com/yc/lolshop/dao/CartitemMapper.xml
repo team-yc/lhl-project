@@ -6,6 +6,9 @@
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="count" jdbcType="INTEGER" property="count" />
+    <association property="product" column="pid" 
+    	select="com.yc.lolshop.dao.ProductMapper.selectByPrimaryKey">
+    </association>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>

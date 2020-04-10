@@ -3,14 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<link rel="stylesheet" href="css/header.css" />
+<link rel="stylesheet" href="css/mid.css" />
+<link rel="stylesheet" href="css/ads.css" />
 <link rel="stylesheet" href="css/clist.css" />
+<script type="text/javascript" src="js/ads.js"></script>
 <script type="text/javascript" src="js/click.js"></script>
 </head>
 
 <body>
+	<div th:include="common/common::header"></div>
 	<div class="clist_tab">
-		<a class="clist_tab_1">商城首页 </a> > <a> 雕塑手办</a>
-
+		<a href="index" class="clist_tab_1" style="color: #000">商城首页 ></a>
+		<span th:if="${param.id != null }">
+			<a th:text="${cclist2.cname}" >111</a>
+		</span>
+		
+		<a th:if="${param.csid != null}" th:text="'>'+${param.csname}">
+					>12222
+		</a>
 	</div>
 	<div class="clist_top">
 		<img src="img/雕塑手办.jpg" />
@@ -18,123 +29,71 @@
 	<div class="clist_bq">
 		<dl>
 			<dt>
-				<a href="clist.html">| 雕塑手办</a>
+				<a href="#" th:text="'| '+${cclist2.cname}"> 雕塑手办</a>
+				
 			</dt>
 
-			<dd>
-				<a href="clist.html">大型雕塑</a>
-			</dd>
-
-			<dd>
-				<a href="clist.html">中型雕塑</a>
-			</dd>
-
-			<dd>
-				<a href="clist.html">手办</a>
-			</dd>
-
-			<dd>
-				<a href="clist.html?csid=4">限定手办</a>
-			</dd>
-
-			<dd>
-				<a href="clist.html?csid=5">迷你手办</a>
-			</dd>
-
-		</dl>
-
-		<dl>
-			<dt>
-				<a href="clist.html?cid=2">| 价格</a>
-			</dt>
-
-			<dd>
-				<a href="clist.html?csid=9">100-300元</a>
-			</dd>
-
-			<dd>
-				<a href="clist.html?csid=10">300元以上</a>
-			</dd>
-
-		</dl>
-		<dl>
-			<dt>
-				<a href="clist.html?cid=4">| 英雄</a>
-			</dt>
-
-			<dd>
-				<a href="clist.html?csid=20">上单</a>
-			</dd>
-
-			<dd>
-				<a href="clist.html?csid=21">中单</a>
-			</dd>
-
-			<dd>
-				<a href="clist.html?csid=22">ADC</a>
-			</dd>
-
-			<dd>
-				<a href="clist.html?csid=23">辅助</a>
-			</dd>
-			<dd>
-				<a href="clist.html?csid=23">打野</a>
-			</dd>
-			<dd>
-				<a href="clist.html?csid=23">坦克</a>
-			</dd>
-			<dd>
-				<a href="clist.html?csid=23">刺客</a>
-			</dd>
-			<dd>
-				<a href="clist.html?csid=23">法师</a>
-			</dd>
-			<dd>
-				<a href="clist.html?csid=23">射手</a>
-			</dd>
+			
+				<dd th:each="csn : ${csnlist}">
+					<a th:text="${csn.csname}" 
+						th:href="'clist?id='+${csn.cid}+'&csid='+${csn.id}+'&csname='+${csn.csname}">
+						大型雕塑
+					</a>
+				</dd>
+			
 
 		</dl>
 
 	</div>
 	<div class="clist_shop">
 		<ul>
-			<li><a href="">
+			<li>
+				<a href="">
 					<div class="clist_shop_img">
 						<img src="img/阿卡丽手办.jpg" />
 					</div>
 					<p>阿卡丽手办</p>
-			</a></li>
+				</a>
+			</li>
 
-			<li><a href="">
+			<li>
+				<a href="">
 
 					<div class="clist_shop_img">
 						<img src="img/压缩手办.jpg" />
 					</div>
 					<p>压缩手办</p>
-			</a></li>
-			<li><a href="">
+				</a>
+			</li>
+			<li>
+				<a href="">
 
 					<div class="clist_shop_img">
 						<img src="img/原计划易手办.jpg" />
 					</div>
 					<p>原计划易手办</p>
-			</a></li>
-			<li><a href="">
+				</a>
+			</li>
+			<li>
+				<a href="">
 
 					<div class="clist_shop_img">
 						<img src="img/星之守护者索拉卡手办.jpg" />
 					</div>
 					<p>星之守护者索拉卡手办</p>
-			</a></li>
-			<li><a href="">
+				</a>
+			</li>
+			<li>
+				<a href="">
 					<div class="clist_shop_img">
 						<img src="img/星之守护者索拉卡手办.jpg" />
 					</div>
 					<p>星之守护者索拉卡手办</p>
-			</a></li>
+				</a>
+			</li>
 		</ul>
 	</div>
-
+	<div th:replace="common/common::.footer"></div>
 </body>
 
 </html>

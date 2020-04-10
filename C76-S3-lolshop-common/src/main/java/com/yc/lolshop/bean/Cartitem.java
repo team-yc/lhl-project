@@ -1,13 +1,43 @@
 package com.yc.lolshop.bean;
 
-public class Cartitem {
-    private Integer id;
+import java.io.Serializable;
+import java.util.List;
+
+public class Cartitem implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private Integer uid;
 
     private Integer pid;
 
     private Integer count;
+    
+    private Product product;
+    
+    public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public List<Cartitem> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Cartitem> children) {
+		this.children = children;
+	}
+
+	/**
+     * 子类集合 Cartitem
+     */
+    
+    private List<Cartitem> children;
 
     public Integer getId() {
         return id;

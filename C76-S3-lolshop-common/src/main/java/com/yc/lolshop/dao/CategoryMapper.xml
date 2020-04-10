@@ -5,7 +5,12 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="cname" jdbcType="VARCHAR" property="cname" />
     <result column="cimg" jdbcType="VARCHAR" property="cimg" />
+    <collection property="product" column="id"
+    	select="findshop"></collection>
   </resultMap>
+  <select id="findshop" resultType="com.yc.lolshop.bean.Product">
+  	select product.* from product ,categorysecond ,category where product.csid = categorysecond.id and categorysecond.cid = category.id and category.id=#{id}
+  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

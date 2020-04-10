@@ -23,8 +23,8 @@
 					>12222
 		</a>
 	</div>
-	<div class="clist_top">
-		<img src="img/雕塑手办.jpg" />
+	<div class="clist_top" >
+		<img th:src="${cclist2.cimg}" />
 	</div>
 	<div class="clist_bq">
 		<dl>
@@ -33,62 +33,25 @@
 				
 			</dt>
 
-			
-				<dd th:each="csn : ${csnlist}">
-					<a th:text="${csn.csname}" 
-						th:href="'clist?id='+${csn.cid}+'&csid='+${csn.id}+'&csname='+${csn.csname}">
-						大型雕塑
-					</a>
-				</dd>
-			
+
+			<dd th:each="csn : ${csnlist}">
+				<a th:text="${csn.csname}"
+					th:href="'clist?id='+${csn.cid}+'&csid='+${csn.id}+'&csname='+${csn.csname}">
+					大型雕塑 </a>
+			</dd>
+
 
 		</dl>
 
 	</div>
 	<div class="clist_shop">
-		<ul>
-			<li>
+		<ul> 
+			<li th:each="pc : ${pclist}">
 				<a href="">
 					<div class="clist_shop_img">
-						<img src="img/阿卡丽手办.jpg" />
+						<img th:src="${pc.img.url}" />
 					</div>
-					<p>阿卡丽手办</p>
-				</a>
-			</li>
-
-			<li>
-				<a href="">
-
-					<div class="clist_shop_img">
-						<img src="img/压缩手办.jpg" />
-					</div>
-					<p>压缩手办</p>
-				</a>
-			</li>
-			<li>
-				<a href="">
-
-					<div class="clist_shop_img">
-						<img src="img/原计划易手办.jpg" />
-					</div>
-					<p>原计划易手办</p>
-				</a>
-			</li>
-			<li>
-				<a href="">
-
-					<div class="clist_shop_img">
-						<img src="img/星之守护者索拉卡手办.jpg" />
-					</div>
-					<p>星之守护者索拉卡手办</p>
-				</a>
-			</li>
-			<li>
-				<a href="">
-					<div class="clist_shop_img">
-						<img src="img/星之守护者索拉卡手办.jpg" />
-					</div>
-					<p>星之守护者索拉卡手办</p>
+					<span th:text="${pc.pname}">阿卡丽手办</span>
 				</a>
 			</li>
 		</ul>

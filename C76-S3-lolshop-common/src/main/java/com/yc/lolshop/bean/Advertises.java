@@ -1,11 +1,11 @@
 package com.yc.lolshop.bean;
 
-public class Img {
+public class Advertises {
     private Integer id;
 
-    private Integer pid;
-
     private String url;
+
+    private String img;
 
     public Integer getId() {
         return id;
@@ -13,14 +13,6 @@ public class Img {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
     }
 
     public String getUrl() {
@@ -31,10 +23,11 @@ public class Img {
         this.url = url == null ? null : url.trim();
     }
 
-	@Override
-	public String toString() {
-		return "Img [id=" + id + ", pid=" + pid + ", url=" + url + "]";
-	}
-    
-    
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img == null ? null : img.trim();
+    }
 }

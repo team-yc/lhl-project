@@ -3,51 +3,49 @@ package com.yc.lolshop.bean;
 import java.util.List;
 
 public class Category {
-    private Integer id;
+	private Integer id;
 
-    private String cname;
+	private String cname;
 
-    private String cimg;
-    
-    /**
-     * 	子类集合Category
-     */
-    private List<Category> children;
+	private String cimg;
 
-    public Category(int id, String cname) {
+	private List<Product> product;
+
+	public Category(int id, String cname, String cimg) {
 		this.id = id;
 		this.cname = cname;
+		this.cimg = cimg;
 	}
 
-	public List<Category> getChildren() {
-		return children;
+	public List<Product> getProduct() {
+		return product;
 	}
 
-	public void setChildren(List<Category> children) {
-		this.children = children;
+	public void setProduct(List<Product> product) {
+		this.product = product;
 	}
 
 	public Integer getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getCname() {
-        return cname;
-    }
+	public String getCname() {
+		return cname;
+	}
 
-    public void setCname(String cname) {
-        this.cname = cname == null ? null : cname.trim();
-    }
+	public void setCname(String cname) {
+		this.cname = cname == null ? null : cname.trim();
+	}
 
-    public String getCimg() {
-        return cimg;
-    }
+	public String getCimg() {
+		return cimg;
+	}
 
-    public void setCimg(String cimg) {
-        this.cimg = cimg == null ? null : cimg.trim();
-    }
+	public void setCimg(String cimg) {
+		this.cimg = cimg == null ? null : cimg.trim();
+	}
 }

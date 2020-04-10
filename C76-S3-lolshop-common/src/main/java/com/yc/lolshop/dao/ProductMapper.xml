@@ -5,15 +5,17 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="csid" jdbcType="INTEGER" property="csid" />
-    <result column="iid" jdbcType="INTEGER" property="iid" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
     <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="pnum" jdbcType="INTEGER" property="pnum" />
     <result column="pdesc" jdbcType="VARCHAR" property="pdesc" />
     <result column="pdate" jdbcType="TIMESTAMP" property="pdate" />
-    <association property="img" column="iid" 
-   	 	select="com.yc.lolshop.dao.ImgMapper.selectByPrimaryKey">
-   	</association>
+    <collection property="img" column="id" 
+   	 	select="selectImg"></collection>
   </resultMap>
+  <select id="selectImg" resultType="com.yc.lolshop.bean.Img">
+  	select * from img where pid = #{id}
+  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -73,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, uid, csid, iid, pname, price, pdesc, pdate
+    id, uid, csid, pname, price, pnum, pdesc, pdate
   </sql>
   <select id="selectByExample" parameterType="com.yc.lolshop.bean.ProductExample" resultMap="BaseResultMap">
     select
@@ -109,11 +111,11 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into product (uid, csid, iid, 
-      pname, price, pdesc, 
+    insert into product (uid, csid, pname, 
+      price, pnum, pdesc, 
       pdate)
-    values (#{uid,jdbcType=INTEGER}, #{csid,jdbcType=INTEGER}, #{iid,jdbcType=INTEGER}, 
-      #{pname,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{pdesc,jdbcType=VARCHAR}, 
+    values (#{uid,jdbcType=INTEGER}, #{csid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DOUBLE}, #{pnum,jdbcType=INTEGER}, #{pdesc,jdbcType=VARCHAR}, 
       #{pdate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.yc.lolshop.bean.Product">
@@ -128,14 +130,14 @@
       <if test="csid != null">
         csid,
       </if>
-      <if test="iid != null">
-        iid,
-      </if>
       <if test="pname != null">
         pname,
       </if>
       <if test="price != null">
         price,
+      </if>
+      <if test="pnum != null">
+        pnum,
       </if>
       <if test="pdesc != null">
         pdesc,
@@ -151,14 +153,14 @@
       <if test="csid != null">
         #{csid,jdbcType=INTEGER},
       </if>
-      <if test="iid != null">
-        #{iid,jdbcType=INTEGER},
-      </if>
       <if test="pname != null">
         #{pname,jdbcType=VARCHAR},
       </if>
       <if test="price != null">
         #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="pnum != null">
+        #{pnum,jdbcType=INTEGER},
       </if>
       <if test="pdesc != null">
         #{pdesc,jdbcType=VARCHAR},
@@ -186,14 +188,14 @@
       <if test="record.csid != null">
         csid = #{record.csid,jdbcType=INTEGER},
       </if>
-      <if test="record.iid != null">
-        iid = #{record.iid,jdbcType=INTEGER},
-      </if>
       <if test="record.pname != null">
         pname = #{record.pname,jdbcType=VARCHAR},
       </if>
       <if test="record.price != null">
         price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pnum != null">
+        pnum = #{record.pnum,jdbcType=INTEGER},
       </if>
       <if test="record.pdesc != null">
         pdesc = #{record.pdesc,jdbcType=VARCHAR},
@@ -211,9 +213,9 @@
     set id = #{record.id,jdbcType=INTEGER},
       uid = #{record.uid,jdbcType=INTEGER},
       csid = #{record.csid,jdbcType=INTEGER},
-      iid = #{record.iid,jdbcType=INTEGER},
       pname = #{record.pname,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=DOUBLE},
+      pnum = #{record.pnum,jdbcType=INTEGER},
       pdesc = #{record.pdesc,jdbcType=VARCHAR},
       pdate = #{record.pdate,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -229,14 +231,14 @@
       <if test="csid != null">
         csid = #{csid,jdbcType=INTEGER},
       </if>
-      <if test="iid != null">
-        iid = #{iid,jdbcType=INTEGER},
-      </if>
       <if test="pname != null">
         pname = #{pname,jdbcType=VARCHAR},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="pnum != null">
+        pnum = #{pnum,jdbcType=INTEGER},
       </if>
       <if test="pdesc != null">
         pdesc = #{pdesc,jdbcType=VARCHAR},
@@ -251,9 +253,9 @@
     update product
     set uid = #{uid,jdbcType=INTEGER},
       csid = #{csid,jdbcType=INTEGER},
-      iid = #{iid,jdbcType=INTEGER},
       pname = #{pname,jdbcType=VARCHAR},
       price = #{price,jdbcType=DOUBLE},
+      pnum = #{pnum,jdbcType=INTEGER},
       pdesc = #{pdesc,jdbcType=VARCHAR},
       pdate = #{pdate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}

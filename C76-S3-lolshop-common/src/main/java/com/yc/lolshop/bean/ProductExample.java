@@ -285,66 +285,6 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andIidIsNull() {
-            addCriterion("iid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidIsNotNull() {
-            addCriterion("iid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidEqualTo(Integer value) {
-            addCriterion("iid =", value, "iid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidNotEqualTo(Integer value) {
-            addCriterion("iid <>", value, "iid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidGreaterThan(Integer value) {
-            addCriterion("iid >", value, "iid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("iid >=", value, "iid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidLessThan(Integer value) {
-            addCriterion("iid <", value, "iid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidLessThanOrEqualTo(Integer value) {
-            addCriterion("iid <=", value, "iid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidIn(List<Integer> values) {
-            addCriterion("iid in", values, "iid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidNotIn(List<Integer> values) {
-            addCriterion("iid not in", values, "iid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidBetween(Integer value1, Integer value2) {
-            addCriterion("iid between", value1, value2, "iid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIidNotBetween(Integer value1, Integer value2) {
-            addCriterion("iid not between", value1, value2, "iid");
-            return (Criteria) this;
-        }
-
         public Criteria andPnameIsNull() {
             addCriterion("pname is null");
             return (Criteria) this;
@@ -472,6 +412,66 @@ public class ProductExample {
 
         public Criteria andPriceNotBetween(Double value1, Double value2) {
             addCriterion("price not between", value1, value2, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumIsNull() {
+            addCriterion("pnum is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumIsNotNull() {
+            addCriterion("pnum is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumEqualTo(Integer value) {
+            addCriterion("pnum =", value, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumNotEqualTo(Integer value) {
+            addCriterion("pnum <>", value, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumGreaterThan(Integer value) {
+            addCriterion("pnum >", value, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pnum >=", value, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumLessThan(Integer value) {
+            addCriterion("pnum <", value, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumLessThanOrEqualTo(Integer value) {
+            addCriterion("pnum <=", value, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumIn(List<Integer> values) {
+            addCriterion("pnum in", values, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumNotIn(List<Integer> values) {
+            addCriterion("pnum not in", values, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumBetween(Integer value1, Integer value2) {
+            addCriterion("pnum between", value1, value2, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andPnumNotBetween(Integer value1, Integer value2) {
+            addCriterion("pnum not between", value1, value2, "pnum");
             return (Criteria) this;
         }
 

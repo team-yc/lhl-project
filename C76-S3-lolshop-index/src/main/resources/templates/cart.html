@@ -75,7 +75,7 @@
 
 				<tr th:each="c : ${clist}">
 					<td width="60">
-						<img th:src="${c.product.img.url}">
+						<img th:src="${c.product.img[0].url}">
 					</td>
 					<td>
 						<a target="_blank">

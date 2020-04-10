@@ -19,7 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yc.lolshop.vo.Result;
 import com.yc.lolshop.bean.Cartitem;
+import com.yc.lolshop.bean.Img;
 import com.yc.lolshop.bean.CartitemExample;
+import com.yc.lolshop.bean.Category;
+import com.yc.lolshop.bean.Categorysecond;
+import com.yc.lolshop.bean.Product;
 import com.yc.lolshop.bean.User;
 import com.yc.lolshop.biz.BizException;
 import com.yc.lolshop.biz.UserBiz;
@@ -35,7 +39,7 @@ public class IndexAction {
 	IlolshopBackAction ilba;
 	@Resource
 	lolshopBackAction lba;
-	
+
 	@Resource
 	private CategoryMapper cgm;
 
@@ -51,20 +55,21 @@ public class IndexAction {
 		if (mav.getViewName() == null) {
 			mav.setViewName("index");
 		}
-		System.out.println("===ViewName" + mav.getViewName());
 		return mav;
 	}
-	
+
 	@GetMapping("clist")
 	public ModelAndView clist(int id, ModelAndView mav) {
-		mav.addObject("csnlist",ilba.getCsn(id) );
-		mav.addObject("cclist2",lba.getCc().get(id-1));
+		mav.addObject("pclist", ilba.getShop(id));
+		List<Product> list = ilba.getShop(id);
+		System.out.println("-----" + list.get(0).getPname());
+		mav.addObject("csnlist", ilba.getPc(id));
+		mav.addObject("cclist2", lba.getCc().get(id - 1));
 		mav.setViewName("clist");
 		return mav;
 	}
-	
-	
-	@GetMapping("tologin")
+
+	@GetMapping({ "tologin", "login.html" })
 	public ModelAndView tologin(ModelAndView mav) {
 		mav.setViewName("login");
 		return mav;
@@ -158,7 +163,7 @@ public class IndexAction {
 			return new Result(1, "注册失败", errors.getFieldErrors());
 		}
 		try {
-			ubiz.reg(user, repassword,errors);
+			ubiz.reg(user, repassword, errors);
 			return new Result(0, "用户注册成功");
 		} catch (BizException e) {
 			e.printStackTrace();
@@ -177,16 +182,21 @@ public class IndexAction {
 		cie.createCriteria().andUidEqualTo(user.getId());
 		List<Cartitem> list = cm.selectByExample(cie);
 		mav.addObject("clist", cm.selectByExample(cie));
-		System.out.println("clist"+list.get(0).getProduct().getPname());
+		System.out.println("=======================");
+		List<Img> imgs = list.get(1).getProduct().getImg();
+		for (Img i : imgs) {
+			System.out.println("==" + i.toString());
+		}
+
 		mav.addObject("total",cm.total(user.getId()));
 		mav.setViewName("cart");
 		return mav;
 	}
+
 	@GetMapping("myinfo.html")
 	public ModelAndView myinfo(ModelAndView mav) {
 		mav.setViewName("myinfo");
 		return mav;
 	}
-
 
 }

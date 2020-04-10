@@ -1,99 +1,96 @@
 package com.yc.lolshop.bean;
 
-import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-public class Product implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-
+public class Product {
 	private Integer id;
 
-    private Integer uid;
+	private Integer uid;
 
-    private Integer csid;
+	private Integer csid;
 
-    private Integer iid;
+	private String pname;
 
-    private String pname;
+	private Double price;
 
-    private Double price;
+	private Integer pnum;
 
-    private String pdesc;
+	private String pdesc;
 
-    private Date pdate;
-    
-    private Img img;
-    
-    public Img getImg() {
+	private Date pdate;
+	
+	private List<Img> img;
+
+	public List<Img> getImg() {
 		return img;
 	}
 
-	public void setImg(Img img) {
+	public void setImg(List<Img> img) {
 		this.img = img;
 	}
 
 	public Integer getId() {
-        return id;
-    }
+		return id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Integer getUid() {
-        return uid;
-    }
+	public Integer getUid() {
+		return uid;
+	}
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
 
-    public Integer getCsid() {
-        return csid;
-    }
+	public Integer getCsid() {
+		return csid;
+	}
 
-    public void setCsid(Integer csid) {
-        this.csid = csid;
-    }
+	public void setCsid(Integer csid) {
+		this.csid = csid;
+	}
 
-    public Integer getIid() {
-        return iid;
-    }
+	public String getPname() {
+		return pname;
+	}
 
-    public void setIid(Integer iid) {
-        this.iid = iid;
-    }
+	public void setPname(String pname) {
+		this.pname = pname == null ? null : pname.trim();
+	}
 
-    public String getPname() {
-        return pname;
-    }
+	public Double getPrice() {
+		return price;
+	}
 
-    public void setPname(String pname) {
-        this.pname = pname == null ? null : pname.trim();
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
-    public Double getPrice() {
-        return price;
-    }
+	public Integer getPnum() {
+		return pnum;
+	}
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+	public void setPnum(Integer pnum) {
+		this.pnum = pnum;
+	}
 
-    public String getPdesc() {
-        return pdesc;
-    }
+	public String getPdesc() {
+		return pdesc;
+	}
 
-    public void setPdesc(String pdesc) {
-        this.pdesc = pdesc == null ? null : pdesc.trim();
-    }
+	public void setPdesc(String pdesc) {
+		this.pdesc = pdesc == null ? null : pdesc.trim();
+	}
 
-    public Date getPdate() {
-        return pdate;
-    }
+	public Date getPdate() {
+		return pdate;
+	}
 
-    public void setPdate(Date pdate) {
-        this.pdate = pdate;
-    }
+	public void setPdate(Date pdate) {
+		this.pdate = pdate;
+	}
 }

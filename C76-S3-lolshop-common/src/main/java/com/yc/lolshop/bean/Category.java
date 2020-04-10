@@ -11,10 +11,9 @@ public class Category {
 
 	private List<Product> product;
 
-	public Category(int id, String cname, String cimg) {
+	public Category(int id, String cname) {
 		this.id = id;
 		this.cname = cname;
-		this.cimg = cimg;
 	}
 
 	public List<Product> getProduct() {

@@ -9,6 +9,7 @@ import com.yc.lolshop.bean.Advertises;
 import com.yc.lolshop.bean.Category;
 import com.yc.lolshop.bean.Categorysecond;
 import com.yc.lolshop.bean.Internet;
+import com.yc.lolshop.bean.Product;
 
 
 
@@ -39,7 +40,12 @@ public class lolshopBackAction implements IlolshopBackAction {
 	
 
 	@Override
-	public List<Categorysecond> getCsn(int id) {
+	public List<Categorysecond> getPc(int id) {
+		return null;
+	}
+
+	@Override
+	public List<Product> getShop(int id) {
 		return null;
 	}
 

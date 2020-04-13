@@ -25,10 +25,12 @@ public interface IlolshopBackAction {
 	@GetMapping("getadvs")
 	public List<Advertises> getadvs();
 	
-	
 	@GetMapping("clist")
 	public List<Categorysecond> getPc(@RequestParam("id")int id);
 	
 	@GetMapping("getShop")
 	public List<Product> getShop(@RequestParam("id")int id);
+
+	@GetMapping("getShopImg")
+	public List<Product> getShopImg(@RequestParam("id")int id);
 }

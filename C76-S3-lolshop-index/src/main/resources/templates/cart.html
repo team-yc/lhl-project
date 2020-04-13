@@ -38,21 +38,37 @@
 	    });
 	
 	}
-	function dir_confirm(pid){
-		if(pid==null){
-			var choose = confirm("确认清空购物车？");
-		}else{
-			var choose = confirm("确认删除？");
+	
+	
+	function del(pid){
+		
+		var se=confirm("确定删除订单？");
+		// 定义请求地址
+		if(se==true){
+			var url = " deleteShop?pid= " + pid;
+			
+		}else {
+			var url = "toCart";
 		}
 		
-		if(choose==true){
-			//checkForm();
-			change(pid);
-		}else{
-			r = false;
-		}
+		alert(pid);
+		$.ajax({
+	        //请求方式
+	        type : "POST",
+	        //请求的媒体类型
+	        contentType : false,
+	        //请求地址
+	        url : url,
+	        //请求成功
+	        success : function(result) {
+	        	alert("删除成功");
+	        	location.href="toCart";
+	        }
+	    });
+			
+		
+		
 	}
-	
 </script>
 <body>
 
@@ -96,7 +112,7 @@
 					</td>
 					<td style="width: 100px">
 						<input type="button" value="删除" style="width: 40px"
-							onclick="dir_confirm(${p.pid})">
+							onclick="del(1)">
 						<input type="button" value="购买" onclick="dir_confirm(${p.pid})"
 							style="width: 40px">
 					</td>

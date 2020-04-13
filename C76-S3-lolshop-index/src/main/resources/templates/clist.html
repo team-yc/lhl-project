@@ -46,10 +46,10 @@
 	</div>
 	<div class="clist_shop">
 		<ul> 
-			<li th:each="pc : ${pclist}">
+			<li th:each="pc : ${shopImg}" >
 				<a href="">
 					<div class="clist_shop_img">
-						<img th:src="${pc.img.url}" />
+						<img th:src="${pc.imgs[0].url}" /> 
 					</div>
 					<span th:text="${pc.pname}">阿卡丽手办</span>
 				</a>

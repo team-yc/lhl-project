@@ -1,5 +1,6 @@
 package com.yc.lolshop.web;
 
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -30,6 +31,10 @@ public class IndexAction {
 	UserBiz ubiz;
 	@Resource
 	IlolshopBackAction ilba;
+	
+	@Resource
+	lolshopBackAction lba;
+	
 	@Resource
 	private CategoryMapper cgm;
 
@@ -49,7 +54,18 @@ public class IndexAction {
 		System.out.println("===ViewName" + mav.getViewName());
 		return mav;
 	}
+	
 
+	@GetMapping("clist")
+	public ModelAndView clist(int id, ModelAndView mav) {
+		mav.addObject("csnlist",ilba.getPc(id) );
+		mav.addObject("cclist2",ilba.getCc().get(id-1));
+		//mav.addObject("pclist",ilba.getShop(id));
+		mav.addObject("shopImg", ilba.getShopImg(id));
+		mav.setViewName("clist");
+		return mav;
+	}
+	
 	@GetMapping({ "tologin", "login.html" })
 	public ModelAndView tologin(ModelAndView mav) {
 		mav.setViewName("login");

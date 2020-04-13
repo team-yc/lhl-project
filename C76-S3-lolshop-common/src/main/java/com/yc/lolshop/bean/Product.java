@@ -1,9 +1,12 @@
 package com.yc.lolshop.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Product {
+public class Product implements Serializable{
+	private static final long serialVersionUID = 1L;
+
 	private Integer id;
 
 	private Integer uid;
@@ -20,15 +23,7 @@ public class Product {
 
 	private Date pdate;
 	
-	private List<Img> img;
-
-	public List<Img> getImg() {
-		return img;
-	}
-
-	public void setImg(List<Img> img) {
-		this.img = img;
-	}
+	private List<Img> imgs;
 
 	public Integer getId() {
 		return id;
@@ -93,4 +88,22 @@ public class Product {
 	public void setPdate(Date pdate) {
 		this.pdate = pdate;
 	}
+
+	public List<Img> getImgs() {
+		return imgs;
+	}
+
+	public void setImgs(List<Img> imgs) {
+		this.imgs = imgs;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", uid=" + uid + ", csid=" + csid + ", pname=" + pname + ", price=" + price
+				+ ", pnum=" + pnum + ", pdesc=" + pdesc + ", pdate=" + pdate + ", imgs=" + imgs + "]";
+	}
+
+	
+
+	
 }

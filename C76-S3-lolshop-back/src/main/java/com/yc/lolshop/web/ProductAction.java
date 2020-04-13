@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yc.lolshop.bean.Categorysecond;
 import com.yc.lolshop.bean.CategorysecondExample;
-import com.yc.lolshop.bean.Product;
 import com.yc.lolshop.dao.CategorysecondMapper;
 import com.yc.lolshop.dao.ProductMapper;
 

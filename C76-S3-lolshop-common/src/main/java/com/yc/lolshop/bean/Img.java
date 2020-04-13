@@ -1,13 +1,15 @@
 package com.yc.lolshop.bean;
 
+
 public class Img {
     private Integer id;
 
     private Integer pid;
 
     private String url;
+    
 
-    public Integer getId() {
+	public Integer getId() {
         return id;
     }
 

@@ -10,7 +10,7 @@
     <result column="pnum" jdbcType="INTEGER" property="pnum" />
     <result column="pdesc" jdbcType="VARCHAR" property="pdesc" />
     <result column="pdate" jdbcType="TIMESTAMP" property="pdate" />
-    <collection property="img" column="id" 
+    <collection property="imgs" column="id" 
    	 	select="selectImg"></collection>
   </resultMap>
   <select id="selectImg" resultType="com.yc.lolshop.bean.Img">

@@ -1,0 +1,46 @@
+#工程配置 ==》 默认的服务名
+spring:
+   application:
+      name: sujian-server
+server:
+   port: 8761
+
+# 忽略自身服务器，不产生错误
+eureka:
+   client:
+      registerWithEureka: false
+      fetchRegistry: false
+      #serviceUrl:
+         #注册服务器的地址
+         #defaultZone: http://127.0.0.1:8100/eureka,http://127.0.0.1:8200/eureka
+
+# java 运行服务参数： --spring.profiles.active=cs1
+---
+spring:
+  profiles: cs1
+server:
+  port: 8100
+eureka:
+   client:
+      serviceUrl:
+         #注册服务器的地址
+         defaultZone: http://127.0.0.1:8000/eureka,http://127.0.0.1:8200/eureka    
+         
+# java 运行服务参数： --spring.profiles.active=cs2         
+---
+spring:
+  profiles: cs2
+server:
+  port: 8200
+eureka:
+   client:
+      serviceUrl:
+         #注册服务器的地址
+         defaultZone: http://127.0.0.1:8000/eureka,http://127.0.0.1:8100/eureka    
+      
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+         
+         

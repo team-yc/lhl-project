@@ -1,0 +1,33 @@
+#工程配置 ==》 默认的服务名
+server: 
+   port: 80
+spring:
+   application:
+      name: sujian-zuul
+
+logging:
+   level:
+      com:
+         yc:
+            sujian:
+               dao: debug
+               web: warn   
+
+# 给 子系统 配置zuul 网关路由和网关共享
+zuul:
+   #配置忽略行为    忽略所有的子系统的默认路由
+   #ignoredServices: '*'
+   routes:
+      sujian-index: 
+         path: /**  
+         # 由于 zuul 有默认的敏感头设定，所以要忽略默认的敏感头设置，必须将敏感头设置为 空
+         sensitiveHeaders:
+      sujian-back:
+         path: /back/**     
+         sensitiveHeaders:
+         
+# 解决 zuul 网关错误 问题         
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000         

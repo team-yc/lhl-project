@@ -1,0 +1,73 @@
+
+<!DOCTYPE HTML>
+<html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+<meta name="robots" content="none" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+<meta name="generator" content="Z-BlogPHP 1.5.1 Zero" />
+<meta name="renderer" content="webkit" />
+<title>会员注册 - 明哥博客</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<style>
+    body{background: url(img/th.jpg) no-repeat center;background-size: cover;}
+.loginbg{background-image: url(img/th.jpg)}
+@media (max-width: 500px){
+body {background: #fff;}
+.login{box-shadow: initial;}
+.head {background: url('img/th.jpg') no-repeat center;background-size: cover;}}
+.bing{display:none}
+</style>
+</head>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script>
+$(function() {
+    $("body").keydown(function() {
+        if (event.keyCode == "13") {
+            $('.submit').click();
+        }
+    });
+    var loginh = $('.login').outerHeight() / 2 + 20;
+    var loginw = $('.login').outerWidth() / 2;
+    $('.login').css('margin-top','-'+loginh+'px');
+    $('.login').css('margin-left','-'+loginw+'px');
+	createCode(4); 
+});
+
+</script>
+ <body>
+<div class="login">
+<div class="loginbg"></div>
+<div class="head">
+<span class="name">明哥博客</span>
+<span class="title">会员注册</span>
+</div>
+<div class="loginbox">
+<input required="required" type="text" name="name" class="text" placeholder="账号">
+<hr class="hr15">
+<input required="required" type="password" name="password" class="text" placeholder="密码">
+<hr class="hr15">
+<input required="required" type="password" name="repassword" class="text" placeholder="密码确认">
+<hr class="hr15">
+<input type="text" name="email" class="text" placeholder="邮箱" />
+<hr class="hr15">
+<input required="required" type="text" name="verifycode" style="width:65%" placeholder="验证码">
+<span class="fr" style="line-height: 45px;width: 100px;background-color: #6699CC;display: inline-block;text-align: center;height: 50px;"  onclick="createCode(4)" id="checkCode">
+<!--img style="border:none;vertical-align:middle;width:90px;height:30px;cursor:pointer;" src="#" alt="" title="" /-->
+</span>
+<hr class="hr15">
+<input type="submit" class="submit" onClick="return register()" value="注册">
+<hr class="hr15">
+<div class="other">
+<div class="hr">社交账号注册</div>
+<hr class="hr15">
+<a href="" class=""><img src="img/qqloginbtn.png"></a>
+</div>
+</div>
+<div class="back"><a href="">返回首页</a></div>
+</div>
+</body>
+</html>
